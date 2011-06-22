@@ -16,3 +16,6 @@ SOURCES += main.cpp\
 HEADERS  += frmconnect.h
 
 FORMS    += frmconnect.ui
+
+OTHER_FILES += \
+    README.txt
