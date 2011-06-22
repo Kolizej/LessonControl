@@ -13,11 +13,13 @@ TEMPLATE = app
 SOURCES += main.cpp\
         frmconnect.cpp \
     frmclient.cpp \
-    frmserver.cpp
+    frmserver.cpp \
+    clsenums.cpp
 
 HEADERS  += frmconnect.h \
     frmclient.h \
-    frmserver.h
+    frmserver.h \
+    clsenums.h
 
 FORMS    += frmconnect.ui \
     frmclient.ui \
