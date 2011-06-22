@@ -15,6 +15,10 @@ public:
     explicit frmConnect(QWidget *parent = 0);
     ~frmConnect();
 
+private slots:
+    void on_chbCreateServer_stateChanged(int arg1);
+    void moveWindowToCenter();
+
 private:
     Ui::frmConnect *ui;
 };
