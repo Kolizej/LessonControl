@@ -19,6 +19,8 @@ private slots:
     void on_chbCreateServer_stateChanged(int arg1);
     void moveWindowToCenter();
 
+    void on_btnOk_clicked();
+
 private:
     Ui::frmConnect *ui;
 };

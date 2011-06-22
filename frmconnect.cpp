@@ -1,6 +1,8 @@
 #include "frmconnect.h"
 #include "ui_frmconnect.h"
 #include "QDesktopWidget"
+#include "frmclient.h"
+#include "frmserver.h"
 
 frmConnect::frmConnect(QWidget *parent) :
     QWidget(parent),
@@ -40,5 +42,15 @@ void frmConnect::moveWindowToCenter()
 
 void frmConnect::on_btnOk_clicked()
 {
-
+    if(ui->chbCreateServer->isChecked())
+    {
+        frmServer *server_frm = new frmServer;
+        server_frm->show();
+    }
+    else
+    {
+        frmClient *client_frm = new frmClient;
+        client_frm->show();
+    }
+    this->close();
 }

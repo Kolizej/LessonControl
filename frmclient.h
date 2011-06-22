@@ -17,6 +17,9 @@ public:
 
 private:
     Ui::frmClient *ui;
+
+private slots:
+    void moveWindowToCenter();
 };
 
 #endif // FRMCLIENT_H

@@ -17,6 +17,9 @@ public:
 
 private:
     Ui::frmServer *ui;
+
+private slots:
+    void moveWindowToCenter();
 };
 
 #endif // FRMSERVER_H
