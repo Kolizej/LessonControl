@@ -11,11 +11,17 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        frmconnect.cpp
+        frmconnect.cpp \
+    frmclient.cpp \
+    frmserver.cpp
 
-HEADERS  += frmconnect.h
+HEADERS  += frmconnect.h \
+    frmclient.h \
+    frmserver.h
 
-FORMS    += frmconnect.ui
+FORMS    += frmconnect.ui \
+    frmclient.ui \
+    frmserver.ui
 
 OTHER_FILES += \
     README.txt

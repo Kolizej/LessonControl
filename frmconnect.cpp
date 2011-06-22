@@ -37,3 +37,8 @@ void frmConnect::moveWindowToCenter()
     frect.moveCenter(QDesktopWidget().availableGeometry().center());
     move(frect.topLeft());
 }
+
+void frmConnect::on_btnOk_clicked()
+{
+
+}
