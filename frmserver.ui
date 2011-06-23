@@ -41,12 +41,12 @@
      <property name="currentIndex">
       <number>0</number>
      </property>
-     <widget class="QWidget" name="tab">
+     <widget class="QWidget" name="tabMain">
       <attribute name="title">
        <string>Общая информация</string>
       </attribute>
      </widget>
-     <widget class="QWidget" name="tab_2">
+     <widget class="QWidget" name="tabDetail">
       <attribute name="title">
        <string>Детализация</string>
       </attribute>
