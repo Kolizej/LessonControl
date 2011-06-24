@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui network
 
 TARGET = LessonControl
 TEMPLATE = app
@@ -14,12 +14,14 @@ SOURCES += main.cpp\
         frmconnect.cpp \
     frmclient.cpp \
     frmserver.cpp \
-    clsenums.cpp
+    clsenums.cpp \
+    clsglobal.cpp
 
 HEADERS  += frmconnect.h \
     frmclient.h \
     frmserver.h \
-    clsenums.h
+    clsenums.h \
+    clsglobal.h
 
 FORMS    += frmconnect.ui \
     frmclient.ui \

@@ -2,6 +2,9 @@
 #define FRMSERVER_H
 
 #include <QWidget>
+#include <QtNetwork/QtNetwork>
+#include "QtNetwork/QTcpServer"
+#include "QtNetwork/QTcpSocket"
 
 namespace Ui {
     class frmServer;
@@ -17,9 +20,13 @@ public:
 
 private:
     Ui::frmServer *ui;
+    QTcpServer server;
+    QTcpSocket *client;
 
 private slots:
     void moveWindowToCenter();
+    void acceptConnection();
+    void startRead();
 };
 
 #endif // FRMSERVER_H
