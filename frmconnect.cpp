@@ -3,6 +3,7 @@
 #include "QDesktopWidget"
 #include "frmclient.h"
 #include "frmserver.h"
+#include "clsglobal.h"
 
 frmConnect::frmConnect(QWidget *parent) :
     QWidget(parent),
@@ -27,6 +28,8 @@ void frmConnect::on_chbCreateServer_stateChanged(int arg1)
     }
     else
     {
+        ui->txtServer->setText("localhost");
+        ui->txtPort->setText(p_port);
         ui->txtServer->setEnabled(false);
         ui->txtPort->setEnabled(false);
         ui->btnOk->setText(tr("Create"));

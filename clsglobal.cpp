@@ -1,5 +1,4 @@
 #include "clsglobal.h"
 
-clsGlobal::clsGlobal()
-{
-}
+QString p_server;
+QString p_port;
