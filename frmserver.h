@@ -5,6 +5,7 @@
 #include <QtNetwork/QtNetwork>
 #include "QtNetwork/QTcpServer"
 #include "QtNetwork/QTcpSocket"
+#include "ClientInformation.h"
 
 namespace Ui {
     class frmServer;
@@ -22,11 +23,14 @@ private:
     Ui::frmServer *ui;
     QTcpServer server;
     QTcpSocket *client;
+    ClientInfo ci;
+    QList<ClientInfo> list_ci;
 
 private slots:
     void moveWindowToCenter();
     void acceptConnection();
     void startRead();
+    void parseMessage(QString message);
 };
 
 #endif // FRMSERVER_H

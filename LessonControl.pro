@@ -21,7 +21,8 @@ HEADERS  += frmconnect.h \
     frmclient.h \
     frmserver.h \
     clsenums.h \
-    clsglobal.h
+    clsglobal.h \
+    ClientInformation.h
 
 FORMS    += frmconnect.ui \
     frmclient.ui \

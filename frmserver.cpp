@@ -38,3 +38,13 @@ void frmServer::startRead()
     //ui->listWidget->addItem((QString)buffer + " online");
     client->close();
 }
+
+void frmServer::parseMessage(QString message)
+{
+    QStringList struct_list =  message.split("|",QString::KeepEmptyParts);
+    ci.s_hostName = struct_list.value(0);
+    ci.s_lessonTemp = struct_list.value(1);
+    ci.s_understanding = struct_list.value(2);
+    ci.s_volume = struct_list.value(3);
+    ci.s_status = struct_list.value(4);
+}
