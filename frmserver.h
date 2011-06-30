@@ -31,6 +31,7 @@ private slots:
     void acceptConnection();
     void startRead();
     void parseMessage(QString message);
+    void setParams();
 };
 
 #endif // FRMSERVER_H

@@ -25,23 +25,25 @@ void frmClient::moveWindowToCenter()
     move(frect.topLeft());
 }
 
+void frmClient::sendMessage()
+{
+    connectToServer(p_server,p_port.toUInt());
+    QByteArray array = makeMessageString();
+    str_message = array.data();
+    client.write(str_message,20);
+}
+
 void frmClient::connectToServer(QString server_adress, quint16 server_port)
 {
     QHostAddress ha(server_adress);
     client.connectToHost(ha,server_port);
 }
 
-void frmClient::sendMessage(QString message)
-{
-    connectToServer(p_server,p_port.toUInt());
-    QByteArray array = message.toAscii();
-    str_message = array.data();
-    client.write(str_message,20);
-}
 
-QString frmClient::makeMessageString(ClientInfo *ci)
-{
+QString frmClient::makeMessageString()
+{    
     QString res;
-    res+=ci->s_hostName+"|"+ci->s_lessonTemp+"|"+ci->s_understanding+"|"+ci->s_volume+"|"+ci->s_status;
+    cInfo.s_hostName = QHostInfo::localHostName();
+    res+=cInfo.s_hostName+"|"+cInfo.s_lessonTemp+"|"+cInfo.s_understanding+"|"+cInfo.s_volume+"|"+cInfo.s_status;
     return res;
 }

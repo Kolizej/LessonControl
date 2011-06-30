@@ -35,7 +35,7 @@ void frmServer::startRead()
 {
     char buffer[1024] = {0};
     client->read(buffer,client->bytesAvailable());
-    //ui->listWidget->addItem((QString)buffer + " online");
+    parseMessage((QString)buffer);
     client->close();
 }
 
@@ -47,4 +47,16 @@ void frmServer::parseMessage(QString message)
     ci.s_understanding = struct_list.value(2);
     ci.s_volume = struct_list.value(3);
     ci.s_status = struct_list.value(4);
+    list_ci.append(ci);
+    setParams();
+}
+
+void frmServer::setParams()
+{
+    ui->listWorkstations->clear();
+
+    foreach(ClientInfo cip,list_ci)
+    {
+        ui->listWorkstations->addItem(cip.s_hostName);
+    }
 }

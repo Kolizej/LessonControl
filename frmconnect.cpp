@@ -28,8 +28,8 @@ void frmConnect::on_chbCreateServer_stateChanged(int arg1)
     }
     else
     {
-        ui->txtServer->setText("localhost");
-        ui->txtPort->setText(p_port);
+        ui->txtServer->setText("127.0.0.1");
+        ui->txtPort->setText("8888");
         ui->txtServer->setEnabled(false);
         ui->txtPort->setEnabled(false);
         ui->btnOk->setText(tr("Create"));
@@ -45,8 +45,11 @@ void frmConnect::moveWindowToCenter()
 
 void frmConnect::on_btnOk_clicked()
 {
+    p_server = ui->txtServer->text();
+    p_port = ui->txtPort->text().toUInt();
+
     if(ui->chbCreateServer->isChecked())
-    {
+    {        
         frmServer *server_frm = new frmServer;
         server_frm->show();
     }

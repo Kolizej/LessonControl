@@ -21,12 +21,13 @@ private:
     Ui::frmClient *ui;
     QTcpSocket client;
     char* str_message;
+    ClientInfo cInfo;
 
 private slots:
     void moveWindowToCenter();
-    void sendMessage(QString message);
+    void sendMessage();
     void connectToServer(QString server_adress, quint16 server_port);
-    QString makeMessageString(ClientInfo *ci);
+    QString makeMessageString();
 };
 
 #endif // FRMCLIENT_H
