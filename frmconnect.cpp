@@ -11,6 +11,13 @@ frmConnect::frmConnect(QWidget *parent) :
 {
     ui->setupUi(this);
     moveWindowToCenter();
+    this->setWindowFlags(Qt::FramelessWindowHint);
+
+    //маска для IP
+    QRegExpValidator *v = new QRegExpValidator(this);
+    QRegExp rx("((1{0,1}[0-9]{0,2}|2[0-4]{1,1}[0-9]{1,1}|25[0-5]{1,1})\\.){3,3}(1{0,1}[0-9]{0,2}|2[0-4]{1,1}[0-9]{1,1}|25[0-5]{1,1})");
+    v->setRegExp(rx);
+    ui->txtServer->setValidator(v);
 }
 
 frmConnect::~frmConnect()

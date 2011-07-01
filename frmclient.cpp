@@ -28,7 +28,7 @@ void frmClient::moveWindowToCenter()
 void frmClient::sendMessage()
 {
     connectToServer(p_server,p_port.toUInt());
-    QByteArray array = makeMessageString();
+    QByteArray array = makeMessageString().toAscii();
     str_message = array.data();
     client.write(str_message,20);
 }
