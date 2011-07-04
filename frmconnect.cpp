@@ -18,6 +18,8 @@ frmConnect::frmConnect(QWidget *parent) :
     QRegExp rx("((1{0,1}[0-9]{0,2}|2[0-4]{1,1}[0-9]{1,1}|25[0-5]{1,1})\\.){3,3}(1{0,1}[0-9]{0,2}|2[0-4]{1,1}[0-9]{1,1}|25[0-5]{1,1})");
     v->setRegExp(rx);
     ui->txtServer->setValidator(v);
+
+    ui->txtPort->setValidator(new QIntValidator(0,65536,ui->txtPort));
 }
 
 frmConnect::~frmConnect()
@@ -27,10 +29,11 @@ frmConnect::~frmConnect()
 
 void frmConnect::on_chbCreateServer_stateChanged(int arg1)
 {
+    //дописать считывание настроек из конфига
     if(arg1 == 0)
     {
         ui->txtServer->setEnabled(true);
-        ui->txtPort->setEnabled(true);
+        ui->txtServer->clear();
         ui->btnOk->setText(tr("Connect"));
     }
     else
@@ -38,7 +41,6 @@ void frmConnect::on_chbCreateServer_stateChanged(int arg1)
         ui->txtServer->setText("127.0.0.1");
         ui->txtPort->setText("8888");
         ui->txtServer->setEnabled(false);
-        ui->txtPort->setEnabled(false);
         ui->btnOk->setText(tr("Create"));
     }
 }
@@ -52,18 +54,28 @@ void frmConnect::moveWindowToCenter()
 
 void frmConnect::on_btnOk_clicked()
 {
-    p_server = ui->txtServer->text();
-    p_port = ui->txtPort->text().toUInt();
+    QHostAddress adressValidator;
 
-    if(ui->chbCreateServer->isChecked())
-    {        
-        frmServer *server_frm = new frmServer;
-        server_frm->show();
+    if(adressValidator.setAddress(ui->txtServer->text()))
+    {
+        p_server = ui->txtServer->text();
+        p_port = ui->txtPort->text();
+
+        if(ui->chbCreateServer->isChecked())
+        {
+            frmServer *server_frm = new frmServer;
+            server_frm->show();
+        }
+        else
+        {
+            frmClient *client_frm = new frmClient;
+            client_frm->show();
+        }
+        this->close();
     }
     else
     {
-        frmClient *client_frm = new frmClient;
-        client_frm->show();
+        ui->txtServer->setFocus();
+        ui->txtServer->setText("Input valid IP");
     }
-    this->close();
 }

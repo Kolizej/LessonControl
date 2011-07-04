@@ -497,7 +497,7 @@ QLineEdit:disabled {
       <item row="2" column="0">
        <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>Port:</string>
+         <string>Port (0-65536):</string>
         </property>
        </widget>
       </item>
@@ -511,7 +511,7 @@ QLineEdit:disabled {
 }</string>
         </property>
         <property name="inputMask">
-         <string>99999; </string>
+         <string/>
         </property>
        </widget>
       </item>

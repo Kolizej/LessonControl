@@ -57,6 +57,6 @@ void frmServer::setParams()
 
     foreach(ClientInfo cip,list_ci)
     {
-        ui->listWorkstations->addItem(cip.s_hostName);
+        ui->listWorkstations->addItem(cip.s_hostName+" is "+cip.s_status);
     }
 }
