@@ -31,6 +31,7 @@ private slots:
     void connectToServer(QString server_adress, quint16 server_port);
     void sendCloseMessage();
     QString makeMessageString();
+    void on_btnDisconnect_clicked();
 };
 
 #endif // FRMCLIENT_H

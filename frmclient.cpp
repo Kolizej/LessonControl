@@ -32,7 +32,9 @@ void frmClient::sendMessage(QString status)
     cInfo.s_status = status;
     QByteArray array = makeMessageString().toAscii();
     str_message = array.data();
+
     client.write(str_message,100);
+
 }
 
 void frmClient::sendCloseMessage()
@@ -55,4 +57,10 @@ QString frmClient::makeMessageString()
     cInfo.s_volume = "3";
     res+=cInfo.s_hostName+"|"+cInfo.s_lessonTemp+"|"+cInfo.s_understanding+"|"+cInfo.s_volume+"|"+cInfo.s_status;
     return res;
+}
+
+void frmClient::on_btnDisconnect_clicked()
+{
+    sendCloseMessage();
+    this->close();
 }
