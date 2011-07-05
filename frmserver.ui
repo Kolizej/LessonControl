@@ -97,7 +97,7 @@
    <item row="1" column="2">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tabMain">
       <attribute name="icon">
@@ -411,7 +411,7 @@
        <string>Детализация</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_3">
-       <item row="0" column="0">
+       <item row="0" column="0" colspan="3">
         <widget class="QGroupBox" name="groupBox_5">
          <property name="title">
           <string>Темп лекции</string>
@@ -484,7 +484,7 @@
          </layout>
         </widget>
        </item>
-       <item row="1" column="0">
+       <item row="1" column="0" colspan="3">
         <widget class="QGroupBox" name="groupBox_8">
          <property name="title">
           <string>Громкость</string>
@@ -557,7 +557,7 @@
          </layout>
         </widget>
        </item>
-       <item row="2" column="0">
+       <item row="2" column="0" colspan="3">
         <widget class="QGroupBox" name="groupBox_7">
          <property name="title">
           <string>Усвоение материала</string>
@@ -615,6 +615,33 @@
            </widget>
           </item>
          </layout>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>257</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="3" column="1">
+        <widget class="QPushButton" name="pushButton_2">
+         <property name="text">
+          <string>Вызов</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <widget class="QPushButton" name="pushButton">
+         <property name="text">
+          <string>Отменить</string>
+         </property>
         </widget>
        </item>
       </layout>

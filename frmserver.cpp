@@ -2,6 +2,7 @@
 #include "ui_frmserver.h"
 #include "QDesktopWidget"
 #include "clsglobal.h"
+#include "QPushButton"
 
 frmServer::frmServer(QWidget *parent) :
     QWidget(parent),
