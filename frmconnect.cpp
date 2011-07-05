@@ -11,7 +11,7 @@ frmConnect::frmConnect(QWidget *parent) :
 {
     ui->setupUi(this);
     moveWindowToCenter();
-    this->setWindowFlags(Qt::FramelessWindowHint);
+    //this->setWindowFlags(Qt::FramelessWindowHint);
 
     //маска для IP
     QRegExpValidator *v = new QRegExpValidator(this);

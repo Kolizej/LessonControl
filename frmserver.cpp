@@ -1,6 +1,7 @@
 #include "frmserver.h"
 #include "ui_frmserver.h"
 #include "QDesktopWidget"
+#include "clsglobal.h"
 
 frmServer::frmServer(QWidget *parent) :
     QWidget(parent),
@@ -9,7 +10,7 @@ frmServer::frmServer(QWidget *parent) :
     ui->setupUi(this);
     moveWindowToCenter();
     connect(&server,SIGNAL(newConnection()),this,SLOT(acceptConnection()));
-    server.listen(QHostAddress::Any,8888);
+    server.listen(QHostAddress::Any,p_port.toUInt());
 }
 
 frmServer::~frmServer()
@@ -47,7 +48,22 @@ void frmServer::parseMessage(QString message)
     ci.s_understanding = struct_list.value(2);
     ci.s_volume = struct_list.value(3);
     ci.s_status = struct_list.value(4);
-    list_ci.append(ci);
+
+    if(ci.s_status == "online")
+    {
+        list_ci.append(ci);
+    }
+    else
+    {
+        for(int i = 0;i<list_ci.count();i++)
+        {
+            if((list_ci.at(i).s_hostName == ci.s_hostName)&& (ci.s_status == "offline"))
+            {
+                list_ci.removeAt(i);
+            }
+        }
+    }
+
     setParams();
 }
 
@@ -57,6 +73,14 @@ void frmServer::setParams()
 
     foreach(ClientInfo cip,list_ci)
     {
-        ui->listWorkstations->addItem(cip.s_hostName+" is "+cip.s_status);
+        if(cip.s_status == "online")
+        {
+            QListWidgetItem *litem = new QListWidgetItem(ui->listWorkstations);
+            litem->setIcon(QIcon(":/icons/itemico/K001.ico"));
+            litem->setText(cip.s_hostName);
+            ui->listWorkstations->addItem(litem);
+        }
     }
+
+    ui->lblCount->setText(QString::number(ui->listWorkstations->count()));
 }

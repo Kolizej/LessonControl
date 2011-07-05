@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/icons/itemico">
+        <file>K001.ico</file>
+        <file>Andere110.ico</file>
+        <file>K018.ico</file>
+        <file>AllDay24.ico</file>
+    </qresource>
+</RCC>

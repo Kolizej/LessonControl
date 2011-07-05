@@ -25,13 +25,15 @@ private:
     ClientInfo cInfo;
     QMessageBox msg;
 
+protected:
+    void closeEvent(QCloseEvent *ce);
+
 private slots:
     void moveWindowToCenter();
     void sendMessage(QString status);
     void connectToServer(QString server_adress, quint16 server_port);
     void sendCloseMessage();
-    QString makeMessageString();
-    void on_btnDisconnect_clicked();
+    QString makeMessageString();    
 };
 
 #endif // FRMCLIENT_H

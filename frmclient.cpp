@@ -4,6 +4,7 @@
 #include "QHostAddress"
 #include "QHostInfo"
 #include "clsglobal.h"
+#include "QCloseEvent"
 
 frmClient::frmClient(QWidget *parent) :
     QWidget(parent),
@@ -59,8 +60,14 @@ QString frmClient::makeMessageString()
     return res;
 }
 
-void frmClient::on_btnDisconnect_clicked()
+void frmClient::closeEvent(QCloseEvent *ce)
 {
     sendCloseMessage();
-    this->close();
+    int res = msg.question(this,"Closing application","Close application?",QMessageBox::Yes,QMessageBox::No);
+
+    if(res == QMessageBox::No)
+    {
+        ce->ignore();
+        sendMessage("online");
+    }
 }
