@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/icons/itemico">
+        <file>K001.ico</file>
+        <file>Andere110.ico</file>
+        <file>K018.ico</file>
+        <file>AllDay24.ico</file>
+        <file>agt_action_success.png</file>
+        <file>agt_action_fail.png</file>
+        <file>agt_update_misc_down.PNG</file>
+        <file>agt_update_misc_up.png</file>
+        <file>volumeUp.ico</file>
+        <file>volumeDown.ico</file>
+        <file>volumeNormal.ico</file>
+        <file>button_cancel.png</file>
+        <file>bell.png</file>
+    </qresource>
+</RCC>

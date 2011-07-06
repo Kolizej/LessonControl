@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QtNetwork>
 #include "ClientInformation.h"
+#include "QMessageBox"
 
 namespace Ui {
     class frmClient;
@@ -22,12 +23,25 @@ private:
     QTcpSocket client;
     char* str_message;
     ClientInfo cInfo;
+    QMessageBox msg;
+
+protected:
+    void closeEvent(QCloseEvent *ce);
 
 private slots:
     void moveWindowToCenter();
-    void sendMessage();
+    void sendMessage(QString status);
     void connectToServer(QString server_adress, quint16 server_port);
-    QString makeMessageString();
+    void sendCloseMessage();
+    QString makeMessageString();    
+    void on_btnUnderstand_toggled(bool checked);
+    void on_btnNotUnderstand_toggled(bool checked);
+    void on_btnSpeedHigh_toggled(bool checked);
+    void on_btnSpeedNormal_toggled(bool checked);
+    void on_btnSpeedLow_toggled(bool checked);
+    void on_btnVolumeHigh_toggled(bool checked);
+    void on_btnVolumeNormal_toggled(bool checked);
+    void on_btnVolumeLow_toggled(bool checked);
 };
 
 #endif // FRMCLIENT_H

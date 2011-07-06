@@ -1,6 +1,9 @@
 #include "frmserver.h"
 #include "ui_frmserver.h"
 #include "QDesktopWidget"
+#include "clsglobal.h"
+#include "QPushButton"
+#include "QCloseEvent"
 
 frmServer::frmServer(QWidget *parent) :
     QWidget(parent),
@@ -9,7 +12,7 @@ frmServer::frmServer(QWidget *parent) :
     ui->setupUi(this);
     moveWindowToCenter();
     connect(&server,SIGNAL(newConnection()),this,SLOT(acceptConnection()));
-    server.listen(QHostAddress::Any,8888);
+    server.listen(QHostAddress::Any,p_port.toUInt());
 }
 
 frmServer::~frmServer()
@@ -47,7 +50,22 @@ void frmServer::parseMessage(QString message)
     ci.s_understanding = struct_list.value(2);
     ci.s_volume = struct_list.value(3);
     ci.s_status = struct_list.value(4);
-    list_ci.append(ci);
+
+    if(ci.s_status == "online")
+    {
+        list_ci.append(ci);
+    }
+    else
+    {
+        for(int i = 0;i<list_ci.count();i++)
+        {
+            if((list_ci.at(i).s_hostName == ci.s_hostName)&& (ci.s_status == "offline"))
+            {
+                list_ci.removeAt(i);
+            }
+        }
+    }
+
     setParams();
 }
 
@@ -57,6 +75,38 @@ void frmServer::setParams()
 
     foreach(ClientInfo cip,list_ci)
     {
-        ui->listWorkstations->addItem(cip.s_hostName);
+        if(cip.s_status == "online")
+        {
+            QListWidgetItem *litem = new QListWidgetItem(ui->listWorkstations);
+            litem->setIcon(QIcon(":/icons/itemico/K001.ico"));
+            litem->setText(cip.s_hostName);
+            ui->listWorkstations->addItem(litem);
+        }
+    }
+
+    ui->lblCount->setText(QString::number(ui->listWorkstations->count()));
+}
+
+void frmServer::closeEvent(QCloseEvent *ce)
+{
+    int res;
+
+    if(ui->listWorkstations->count()>0)
+    {
+        res = msg.question(this,tr("Вихід з програми"),tr("До серверу підключені користувачі. Ви дійсно хочете закрити програму?"),QMessageBox::Yes,QMessageBox::No);
+
+        if(res == QMessageBox::No)
+        {
+            ce->ignore();
+        }
+    }
+    else
+    {
+        res = msg.question(this,tr("Вихід з програми"),tr("Закрити програму?"),QMessageBox::Yes,QMessageBox::No);
+
+        if(res == QMessageBox::No)
+        {
+            ce->ignore();
+        }
     }
 }

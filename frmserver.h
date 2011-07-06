@@ -6,6 +6,7 @@
 #include "QtNetwork/QTcpServer"
 #include "QtNetwork/QTcpSocket"
 #include "ClientInformation.h"
+#include "QMessageBox"
 
 namespace Ui {
     class frmServer;
@@ -25,6 +26,10 @@ private:
     QTcpSocket *client;
     ClientInfo ci;
     QList<ClientInfo> list_ci;
+    QMessageBox msg;
+
+protected:
+    void closeEvent(QCloseEvent *ce);
 
 private slots:
     void moveWindowToCenter();

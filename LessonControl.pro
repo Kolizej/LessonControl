@@ -30,3 +30,8 @@ FORMS    += frmconnect.ui \
 
 OTHER_FILES += \
     README.txt
+
+RESOURCES += \
+    images.qrc
+
+RC_FILE = LessonControl.rc
