@@ -33,3 +33,5 @@ OTHER_FILES += \
 
 RESOURCES += \
     images.qrc
+
+RC_FILE = LessonControl.rc

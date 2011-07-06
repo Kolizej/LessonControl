@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Client</string>
+   <string>Lesson Control - Клієнт</string>
   </property>
   <property name="windowIcon">
    <iconset resource="images.qrc">
@@ -33,10 +33,10 @@
    <item row="0" column="0">
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
-      <string>Имя компьютера</string>
+      <string>Назва компьютера</string>
      </property>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="1">
+      <item row="1" column="2">
        <widget class="QLineEdit" name="lineEdit">
         <property name="enabled">
          <bool>false</bool>
@@ -49,7 +49,7 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="0">
+      <item row="1" column="1">
        <widget class="QLabel" name="label">
         <property name="font">
          <font>
@@ -59,7 +59,32 @@
          </font>
         </property>
         <property name="text">
-         <string>CompName</string>
+         <string>Komp1</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="minimumSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="images.qrc">:/icons/itemico/K018.ico</pixmap>
+        </property>
+        <property name="scaledContents">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -69,13 +94,17 @@
    <item row="1" column="0">
     <widget class="QGroupBox" name="groupBox_2">
      <property name="title">
-      <string>Усвоение материала</string>
+      <string>Засвоєння матеріалу</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="0" column="0">
        <widget class="QPushButton" name="pushButton">
         <property name="text">
-         <string>Понятно</string>
+         <string>Зрозуміло</string>
+        </property>
+        <property name="icon">
+         <iconset resource="images.qrc">
+          <normaloff>:/icons/itemico/agt_action_success.png</normaloff>:/icons/itemico/agt_action_success.png</iconset>
         </property>
         <property name="checkable">
          <bool>true</bool>
@@ -88,7 +117,11 @@
       <item row="0" column="1">
        <widget class="QPushButton" name="pushButton_2">
         <property name="text">
-         <string>Не понятно</string>
+         <string>Не зрозуміло</string>
+        </property>
+        <property name="icon">
+         <iconset resource="images.qrc">
+          <normaloff>:/icons/itemico/agt_action_fail.png</normaloff>:/icons/itemico/agt_action_fail.png</iconset>
         </property>
         <property name="checkable">
          <bool>true</bool>
@@ -101,13 +134,17 @@
    <item row="2" column="0">
     <widget class="QGroupBox" name="groupBox_3">
      <property name="title">
-      <string>Темп лекции</string>
+      <string>Темп лекції</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_3">
       <item row="0" column="0">
        <widget class="QPushButton" name="pushButton_3">
         <property name="text">
-         <string>Быстро</string>
+         <string>Швидко</string>
+        </property>
+        <property name="icon">
+         <iconset resource="images.qrc">
+          <normaloff>:/icons/itemico/agt_update_misc_up.png</normaloff>:/icons/itemico/agt_update_misc_up.png</iconset>
         </property>
         <property name="checkable">
          <bool>true</bool>
@@ -119,6 +156,10 @@
         <property name="text">
          <string>Норма</string>
         </property>
+        <property name="icon">
+         <iconset resource="images.qrc">
+          <normaloff>:/icons/itemico/agt_action_success.png</normaloff>:/icons/itemico/agt_action_success.png</iconset>
+        </property>
         <property name="checkable">
          <bool>true</bool>
         </property>
@@ -127,7 +168,11 @@
       <item row="0" column="2">
        <widget class="QPushButton" name="pushButton_5">
         <property name="text">
-         <string>Медленно</string>
+         <string>Повільно</string>
+        </property>
+        <property name="icon">
+         <iconset resource="images.qrc">
+          <normaloff>:/icons/itemico/agt_update_misc_down.PNG</normaloff>:/icons/itemico/agt_update_misc_down.PNG</iconset>
         </property>
         <property name="checkable">
          <bool>true</bool>
@@ -140,13 +185,17 @@
    <item row="3" column="0">
     <widget class="QGroupBox" name="groupBox_4">
      <property name="title">
-      <string>Громкость</string>
+      <string>Голосність</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_4">
       <item row="0" column="0">
        <widget class="QPushButton" name="pushButton_6">
         <property name="text">
-         <string>Громко</string>
+         <string>Голосно</string>
+        </property>
+        <property name="icon">
+         <iconset resource="images.qrc">
+          <normaloff>:/icons/itemico/volumeUp.ico</normaloff>:/icons/itemico/volumeUp.ico</iconset>
         </property>
         <property name="checkable">
          <bool>true</bool>
@@ -158,6 +207,10 @@
         <property name="text">
          <string>Норма</string>
         </property>
+        <property name="icon">
+         <iconset resource="images.qrc">
+          <normaloff>:/icons/itemico/volumeNormal.ico</normaloff>:/icons/itemico/volumeNormal.ico</iconset>
+        </property>
         <property name="checkable">
          <bool>true</bool>
         </property>
@@ -167,6 +220,10 @@
        <widget class="QPushButton" name="pushButton_8">
         <property name="text">
          <string>Тихо</string>
+        </property>
+        <property name="icon">
+         <iconset resource="images.qrc">
+          <normaloff>:/icons/itemico/volumeDown.ico</normaloff>:/icons/itemico/volumeDown.ico</iconset>
         </property>
         <property name="checkable">
          <bool>true</bool>

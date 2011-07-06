@@ -63,7 +63,7 @@ QString frmClient::makeMessageString()
 void frmClient::closeEvent(QCloseEvent *ce)
 {
     sendCloseMessage();
-    int res = msg.question(this,"Closing application","Close application?",QMessageBox::Yes,QMessageBox::No);
+    int res = msg.question(this,tr("Вихід з програми"),tr("Закрити програму?"),QMessageBox::Yes,QMessageBox::No);
 
     if(res == QMessageBox::No)
     {

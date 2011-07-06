@@ -3,6 +3,7 @@
 #include "QDesktopWidget"
 #include "clsglobal.h"
 #include "QPushButton"
+#include "QCloseEvent"
 
 frmServer::frmServer(QWidget *parent) :
     QWidget(parent),
@@ -84,4 +85,28 @@ void frmServer::setParams()
     }
 
     ui->lblCount->setText(QString::number(ui->listWorkstations->count()));
+}
+
+void frmServer::closeEvent(QCloseEvent *ce)
+{
+    int res;
+
+    if(ui->listWorkstations->count()>0)
+    {
+        res = msg.question(this,tr("Вихід з програми"),tr("До серверу підключені користувачі. Ви дійсно хочете закрити програму?"),QMessageBox::Yes,QMessageBox::No);
+
+        if(res == QMessageBox::No)
+        {
+            ce->ignore();
+        }
+    }
+    else
+    {
+        res = msg.question(this,tr("Вихід з програми"),tr("Закрити програму?"),QMessageBox::Yes,QMessageBox::No);
+
+        if(res == QMessageBox::No)
+        {
+            ce->ignore();
+        }
+    }
 }

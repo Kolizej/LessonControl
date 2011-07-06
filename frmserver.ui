@@ -17,7 +17,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Server</string>
+   <string>Lesson Control - Сервер</string>
   </property>
   <property name="windowIcon">
    <iconset resource="images.qrc">
@@ -33,7 +33,7 @@
       </font>
      </property>
      <property name="text">
-      <string>В сети:</string>
+      <string>В мережі:</string>
      </property>
     </widget>
    </item>
@@ -59,7 +59,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Текущая информация:</string>
+      <string>Поточна інформація:</string>
      </property>
     </widget>
    </item>
@@ -97,7 +97,7 @@
    <item row="1" column="2">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tabMain">
       <attribute name="icon">
@@ -105,13 +105,13 @@
         <normaloff>:/icons/itemico/K018.ico</normaloff>:/icons/itemico/K018.ico</iconset>
       </attribute>
       <attribute name="title">
-       <string>Общая информация</string>
+       <string>Загальна інформація</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_2">
        <item row="0" column="0">
         <widget class="QGroupBox" name="groupBox">
          <property name="title">
-          <string>Темп лекции</string>
+          <string>Темп лекціі</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_4">
           <item row="0" column="0" rowspan="3">
@@ -142,7 +142,7 @@
              </font>
             </property>
             <property name="text">
-             <string>Быстро</string>
+             <string>Швидко</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -171,7 +171,7 @@
              </font>
             </property>
             <property name="text">
-             <string>Медленно</string>
+             <string>Повільно</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
@@ -184,7 +184,7 @@
        <item row="1" column="0">
         <widget class="QGroupBox" name="groupBox_2">
          <property name="title">
-          <string>Громкость</string>
+          <string>Голосність</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_5">
           <item row="0" column="0" rowspan="3">
@@ -215,7 +215,7 @@
              </font>
             </property>
             <property name="text">
-             <string>Громко</string>
+             <string>Голосно</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -257,7 +257,7 @@
        <item row="3" column="0">
         <widget class="QGroupBox" name="groupBox_4">
          <property name="title">
-          <string>Уровень понимания</string>
+          <string>Рівень розуміння</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_7">
           <item row="0" column="0" rowspan="4">
@@ -343,7 +343,7 @@
        <item row="2" column="0">
         <widget class="QGroupBox" name="groupBox_3">
          <property name="title">
-          <string>Усвоение материала</string>
+          <string>Засвоєння матеріалу</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_6">
           <item row="0" column="0" rowspan="2">
@@ -374,7 +374,7 @@
              </font>
             </property>
             <property name="text">
-             <string>Понятно</string>
+             <string>Зрозуміло</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -390,7 +390,7 @@
              </font>
             </property>
             <property name="text">
-             <string>Не понятно</string>
+             <string>Не зрозуміло</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
@@ -408,13 +408,13 @@
         <normaloff>:/icons/itemico/AllDay24.ico</normaloff>:/icons/itemico/AllDay24.ico</iconset>
       </attribute>
       <attribute name="title">
-       <string>Детализация</string>
+       <string>Детальна інформація</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_3">
        <item row="0" column="0" colspan="3">
         <widget class="QGroupBox" name="groupBox_5">
          <property name="title">
-          <string>Темп лекции</string>
+          <string>Темп лекції</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_8">
           <item row="0" column="0" rowspan="3">
@@ -445,7 +445,7 @@
              </font>
             </property>
             <property name="text">
-             <string>Быстро</string>
+             <string>Швидко</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -474,7 +474,7 @@
              </font>
             </property>
             <property name="text">
-             <string>Медленно</string>
+             <string>Повільно</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
@@ -487,7 +487,7 @@
        <item row="1" column="0" colspan="3">
         <widget class="QGroupBox" name="groupBox_8">
          <property name="title">
-          <string>Громкость</string>
+          <string>Голосність</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_11">
           <item row="0" column="0" rowspan="3">
@@ -518,7 +518,7 @@
              </font>
             </property>
             <property name="text">
-             <string>Громко</string>
+             <string>Голосно</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -560,7 +560,7 @@
        <item row="2" column="0" colspan="3">
         <widget class="QGroupBox" name="groupBox_7">
          <property name="title">
-          <string>Усвоение материала</string>
+          <string>Засвоєння матеріалу</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_10">
           <item row="0" column="0" rowspan="2">
@@ -591,7 +591,7 @@
              </font>
             </property>
             <property name="text">
-             <string>Понятно</string>
+             <string>Зрозуміло</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -607,7 +607,7 @@
              </font>
             </property>
             <property name="text">
-             <string>Не понятно</string>
+             <string>Не зрозуміло</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
@@ -633,14 +633,22 @@
        <item row="3" column="1">
         <widget class="QPushButton" name="pushButton_2">
          <property name="text">
-          <string>Вызов</string>
+          <string>Виклик</string>
+         </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/icons/itemico/bell.png</normaloff>:/icons/itemico/bell.png</iconset>
          </property>
         </widget>
        </item>
        <item row="3" column="2">
         <widget class="QPushButton" name="pushButton">
          <property name="text">
-          <string>Отменить</string>
+          <string>Відмінити</string>
+         </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/icons/itemico/button_cancel.png</normaloff>:/icons/itemico/button_cancel.png</iconset>
          </property>
         </widget>
        </item>

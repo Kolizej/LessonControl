@@ -34,14 +34,14 @@ void frmConnect::on_chbCreateServer_stateChanged(int arg1)
     {
         ui->txtServer->setEnabled(true);
         ui->txtServer->clear();
-        ui->btnOk->setText(tr("Connect"));
+        ui->btnOk->setText(tr("Підключитись"));
     }
     else
     {
         ui->txtServer->setText("127.0.0.1");
         ui->txtPort->setText("8888");
         ui->txtServer->setEnabled(false);
-        ui->btnOk->setText(tr("Create"));
+        ui->btnOk->setText(tr("Створити"));
     }
 }
 
@@ -76,6 +76,6 @@ void frmConnect::on_btnOk_clicked()
     else
     {
         ui->txtServer->setFocus();
-        ui->txtServer->setText("Input valid IP");
+        ui->txtServer->setText("Введіть корректний IP");
     }
 }
