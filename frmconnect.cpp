@@ -11,7 +11,6 @@ frmConnect::frmConnect(QWidget *parent) :
 {
     ui->setupUi(this);
     moveWindowToCenter();
-    //this->setWindowFlags(Qt::FramelessWindowHint);
 
     //маска дл€ IP
     QRegExpValidator *v = new QRegExpValidator(this);
@@ -76,6 +75,6 @@ void frmConnect::on_btnOk_clicked()
     else
     {
         ui->txtServer->setFocus();
-        ui->txtServer->setText("¬вед≥ть корректний IP");
+        ui->txtServer->setText(tr("¬вед≥ть корректний IP"));
     }
 }

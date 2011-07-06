@@ -110,12 +110,26 @@
       <layout class="QGridLayout" name="gridLayout_2">
        <item row="0" column="0">
         <widget class="QGroupBox" name="groupBox">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
          <property name="title">
           <string>Темп лекціі</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_4">
           <item row="0" column="0" rowspan="3">
            <widget class="QSlider" name="verticalSlider">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QSlider::handle:disable:vertical{			
+	background-color: qlineargradient(spread:reflect, x1:0.506, y1:0.00568182, x2:0.505, y2:0.528409, stop:0 rgba(255, 255, 255, 255), stop:0.994318 rgba(135, 135, 135, 255));
+	border: 1px solid transparent;
+	border-radius: 4 px;
+	height: 10 px;
+}</string>
+            </property>
             <property name="minimum">
              <number>1</number>
             </property>
@@ -124,6 +138,9 @@
             </property>
             <property name="orientation">
              <enum>Qt::Vertical</enum>
+            </property>
+            <property name="invertedAppearance">
+             <bool>false</bool>
             </property>
             <property name="tickPosition">
              <enum>QSlider::TicksBelow</enum>
@@ -189,6 +206,17 @@
          <layout class="QGridLayout" name="gridLayout_5">
           <item row="0" column="0" rowspan="3">
            <widget class="QSlider" name="verticalSlider_2">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QSlider::handle:disable:vertical{			
+	background-color: qlineargradient(spread:reflect, x1:0.506, y1:0.00568182, x2:0.505, y2:0.528409, stop:0 rgba(255, 255, 255, 255), stop:0.994318 rgba(135, 135, 135, 255));
+	border: 1px solid transparent;
+	border-radius: 4 px;
+	height: 10 px;
+}</string>
+            </property>
             <property name="minimum">
              <number>1</number>
             </property>
@@ -262,6 +290,17 @@
          <layout class="QGridLayout" name="gridLayout_7">
           <item row="0" column="0" rowspan="4">
            <widget class="QSlider" name="verticalSlider_4">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QSlider::handle:disable:vertical{			
+	background-color: qlineargradient(spread:reflect, x1:0.506, y1:0.00568182, x2:0.505, y2:0.528409, stop:0 rgba(255, 255, 255, 255), stop:0.994318 rgba(135, 135, 135, 255));
+	border: 1px solid transparent;
+	border-radius: 4 px;
+	height: 10 px;
+}</string>
+            </property>
             <property name="minimum">
              <number>1</number>
             </property>
@@ -348,6 +387,17 @@
          <layout class="QGridLayout" name="gridLayout_6">
           <item row="0" column="0" rowspan="2">
            <widget class="QSlider" name="verticalSlider_3">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QSlider::handle:disable:vertical{			
+	background-color: qlineargradient(spread:reflect, x1:0.506, y1:0.00568182, x2:0.505, y2:0.528409, stop:0 rgba(255, 255, 255, 255), stop:0.994318 rgba(135, 135, 135, 255));
+	border: 1px solid transparent;
+	border-radius: 4 px;
+	height: 10 px;
+}</string>
+            </property>
             <property name="minimum">
              <number>1</number>
             </property>
@@ -419,6 +469,17 @@
          <layout class="QGridLayout" name="gridLayout_8">
           <item row="0" column="0" rowspan="3">
            <widget class="QSlider" name="verticalSlider_5">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QSlider::handle:disable:vertical{			
+	background-color: qlineargradient(spread:reflect, x1:0.506, y1:0.00568182, x2:0.505, y2:0.528409, stop:0 rgba(255, 255, 255, 255), stop:0.994318 rgba(135, 135, 135, 255));
+	border: 1px solid transparent;
+	border-radius: 4 px;
+	height: 10 px;
+}</string>
+            </property>
             <property name="minimum">
              <number>1</number>
             </property>
@@ -492,6 +553,17 @@
          <layout class="QGridLayout" name="gridLayout_11">
           <item row="0" column="0" rowspan="3">
            <widget class="QSlider" name="verticalSlider_8">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QSlider::handle:disable:vertical{			
+	background-color: qlineargradient(spread:reflect, x1:0.506, y1:0.00568182, x2:0.505, y2:0.528409, stop:0 rgba(255, 255, 255, 255), stop:0.994318 rgba(135, 135, 135, 255));
+	border: 1px solid transparent;
+	border-radius: 4 px;
+	height: 10 px;
+}</string>
+            </property>
             <property name="minimum">
              <number>1</number>
             </property>
@@ -565,6 +637,17 @@
          <layout class="QGridLayout" name="gridLayout_10">
           <item row="0" column="0" rowspan="2">
            <widget class="QSlider" name="verticalSlider_7">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QSlider::handle:disable:vertical{			
+	background-color: qlineargradient(spread:reflect, x1:0.506, y1:0.00568182, x2:0.505, y2:0.528409, stop:0 rgba(255, 255, 255, 255), stop:0.994318 rgba(135, 135, 135, 255));
+	border: 1px solid transparent;
+	border-radius: 4 px;
+	height: 10 px;
+}</string>
+            </property>
             <property name="minimum">
              <number>1</number>
             </property>

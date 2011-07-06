@@ -71,3 +71,73 @@ void frmClient::closeEvent(QCloseEvent *ce)
         sendMessage("online");
     }
 }
+
+void frmClient::on_btnUnderstand_toggled(bool checked)
+{
+    if(checked)
+    {
+        ui->btnNotUnderstand->setChecked(false);
+    }
+}
+
+void frmClient::on_btnNotUnderstand_toggled(bool checked)
+{
+    if(checked)
+    {
+        ui->btnUnderstand->setChecked(false);
+    }
+}
+
+void frmClient::on_btnSpeedHigh_toggled(bool checked)
+{
+    if(checked)
+    {
+        ui->btnSpeedLow->setChecked(false);
+        ui->btnSpeedNormal->setChecked(false);
+    }
+}
+
+void frmClient::on_btnSpeedNormal_toggled(bool checked)
+{
+    if(checked)
+    {
+        ui->btnSpeedLow->setChecked(false);
+        ui->btnSpeedHigh->setChecked(false);
+    }
+}
+
+void frmClient::on_btnSpeedLow_toggled(bool checked)
+{
+    if(checked)
+    {
+        ui->btnSpeedNormal->setChecked(false);
+        ui->btnSpeedHigh->setChecked(false);
+    }
+}
+
+void frmClient::on_btnVolumeHigh_toggled(bool checked)
+{
+    if(checked)
+    {
+        ui->btnVolumeNormal->setChecked(false);
+        ui->btnVolumeLow->setChecked(false);
+    }
+}
+
+void frmClient::on_btnVolumeNormal_toggled(bool checked)
+{
+    if(checked)
+    {
+        ui->btnVolumeHigh->setChecked(false);
+        ui->btnVolumeLow->setChecked(false);
+    }
+}
+
+void frmClient::on_btnVolumeLow_toggled(bool checked)
+{
+    if(checked)
+    {
+        ui->btnVolumeNormal->setChecked(false);
+        ui->btnVolumeHigh->setChecked(false);
+    }
+}

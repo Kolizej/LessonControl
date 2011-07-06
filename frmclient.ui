@@ -40,7 +40,7 @@
        <enum>QLayout::SetDefaultConstraint</enum>
       </property>
       <item row="1" column="1">
-       <widget class="QLabel" name="label">
+       <widget class="QLabel" name="lblWorkstation">
         <property name="font">
          <font>
           <pointsize>10</pointsize>
@@ -92,7 +92,7 @@
        </spacer>
       </item>
       <item row="1" column="3">
-       <widget class="QLineEdit" name="lineEdit">
+       <widget class="QLineEdit" name="indicator">
         <property name="enabled">
          <bool>false</bool>
         </property>
@@ -146,7 +146,7 @@
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="0" column="0">
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="btnUnderstand">
         <property name="text">
          <string>Зрозуміло</string>
         </property>
@@ -158,12 +158,12 @@
          <bool>true</bool>
         </property>
         <property name="checked">
-         <bool>false</bool>
+         <bool>true</bool>
         </property>
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="btnNotUnderstand">
         <property name="text">
          <string>Не зрозуміло</string>
         </property>
@@ -186,7 +186,7 @@
      </property>
      <layout class="QGridLayout" name="gridLayout_3">
       <item row="0" column="0">
-       <widget class="QPushButton" name="pushButton_3">
+       <widget class="QPushButton" name="btnSpeedHigh">
         <property name="text">
          <string>Швидко</string>
         </property>
@@ -200,7 +200,7 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QPushButton" name="pushButton_4">
+       <widget class="QPushButton" name="btnSpeedNormal">
         <property name="text">
          <string>Норма</string>
         </property>
@@ -211,10 +211,13 @@
         <property name="checkable">
          <bool>true</bool>
         </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item row="0" column="2">
-       <widget class="QPushButton" name="pushButton_5">
+       <widget class="QPushButton" name="btnSpeedLow">
         <property name="text">
          <string>Повільно</string>
         </property>
@@ -237,7 +240,7 @@
      </property>
      <layout class="QGridLayout" name="gridLayout_4">
       <item row="0" column="0">
-       <widget class="QPushButton" name="pushButton_6">
+       <widget class="QPushButton" name="btnVolumeHigh">
         <property name="text">
          <string>Голосно</string>
         </property>
@@ -251,7 +254,7 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QPushButton" name="pushButton_7">
+       <widget class="QPushButton" name="btnVolumeNormal">
         <property name="text">
          <string>Норма</string>
         </property>
@@ -262,10 +265,13 @@
         <property name="checkable">
          <bool>true</bool>
         </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item row="0" column="2">
-       <widget class="QPushButton" name="pushButton_8">
+       <widget class="QPushButton" name="btnVolumeLow">
         <property name="text">
          <string>Тихо</string>
         </property>

@@ -34,6 +34,14 @@ private slots:
     void connectToServer(QString server_adress, quint16 server_port);
     void sendCloseMessage();
     QString makeMessageString();    
+    void on_btnUnderstand_toggled(bool checked);
+    void on_btnNotUnderstand_toggled(bool checked);
+    void on_btnSpeedHigh_toggled(bool checked);
+    void on_btnSpeedNormal_toggled(bool checked);
+    void on_btnSpeedLow_toggled(bool checked);
+    void on_btnVolumeHigh_toggled(bool checked);
+    void on_btnVolumeNormal_toggled(bool checked);
+    void on_btnVolumeLow_toggled(bool checked);
 };
 
 #endif // FRMCLIENT_H
