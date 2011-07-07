@@ -42,6 +42,19 @@ void frmServer::startRead()
     client->close();
 }
 
+bool frmServer::isClientInfoExists(ClientInfo clInf)
+{
+    bool res = false;
+
+    for(int i = 0;i<list_ci.count();i++)
+    {
+        if(list_ci.at(i).s_hostName == clInf.s_hostName)
+            return true;
+    }
+
+    return res;
+}
+
 void frmServer::parseMessage(QString message)
 {
     QStringList struct_list =  message.split("|",QString::KeepEmptyParts);
@@ -53,13 +66,28 @@ void frmServer::parseMessage(QString message)
 
     if(ci.s_status == "online")
     {
-        list_ci.append(ci);
+        if(!isClientInfoExists(ci))
+        {
+            list_ci.append(ci);
+        }
+        else
+        {
+            for(int i = 0;i<list_ci.count();i++)
+            {
+                if(list_ci.at(i).s_hostName == ci.s_hostName)
+                {
+                    list_ci.value(i).s_lessonTemp = ci.s_lessonTemp;
+                    list_ci.value(i).s_understanding = ci.s_understanding;
+                    list_ci.value(i).s_volume = ci.s_volume;
+                }
+            }
+        }
     }
     else
     {
         for(int i = 0;i<list_ci.count();i++)
         {
-            if((list_ci.at(i).s_hostName == ci.s_hostName)&& (ci.s_status == "offline"))
+            if(list_ci.at(i).s_hostName == ci.s_hostName)
             {
                 list_ci.removeAt(i);
             }

@@ -15,7 +15,11 @@ frmClient::frmClient(QWidget *parent) :
     moveWindowToCenter();
 
     //начальные параметры для структуры
-    //cInfo.s_understanding =
+    cInfo.s_hostName = QHostInfo::localHostName();
+    cInfo.s_understanding = clsEnums::Understand;
+    cInfo.s_lessonTemp = clsEnums::SpeedNormal;
+    cInfo.s_volume = clsEnums::VolumeNormal;
+    cInfo.s_status = "online";
 
     sendMessage("online");
 }

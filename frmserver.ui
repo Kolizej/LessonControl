@@ -97,7 +97,7 @@
    <item row="1" column="2">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tabMain">
       <attribute name="icon">
@@ -118,7 +118,7 @@
          </property>
          <layout class="QGridLayout" name="gridLayout_4">
           <item row="0" column="0" rowspan="3">
-           <widget class="QSlider" name="verticalSlider">
+           <widget class="QSlider" name="slmTemp">
             <property name="enabled">
              <bool>false</bool>
             </property>
@@ -205,7 +205,7 @@
          </property>
          <layout class="QGridLayout" name="gridLayout_5">
           <item row="0" column="0" rowspan="3">
-           <widget class="QSlider" name="verticalSlider_2">
+           <widget class="QSlider" name="slmVolume">
             <property name="enabled">
              <bool>false</bool>
             </property>
@@ -289,7 +289,7 @@
          </property>
          <layout class="QGridLayout" name="gridLayout_7">
           <item row="0" column="0" rowspan="4">
-           <widget class="QSlider" name="verticalSlider_4">
+           <widget class="QSlider" name="slmLevel">
             <property name="enabled">
              <bool>false</bool>
             </property>
@@ -386,7 +386,7 @@
          </property>
          <layout class="QGridLayout" name="gridLayout_6">
           <item row="0" column="0" rowspan="2">
-           <widget class="QSlider" name="verticalSlider_3">
+           <widget class="QSlider" name="slmUnderstand">
             <property name="enabled">
              <bool>false</bool>
             </property>
@@ -468,7 +468,7 @@
          </property>
          <layout class="QGridLayout" name="gridLayout_8">
           <item row="0" column="0" rowspan="3">
-           <widget class="QSlider" name="verticalSlider_5">
+           <widget class="QSlider" name="sldTemp">
             <property name="enabled">
              <bool>false</bool>
             </property>
@@ -552,7 +552,7 @@
          </property>
          <layout class="QGridLayout" name="gridLayout_11">
           <item row="0" column="0" rowspan="3">
-           <widget class="QSlider" name="verticalSlider_8">
+           <widget class="QSlider" name="sldVolume">
             <property name="enabled">
              <bool>false</bool>
             </property>
@@ -636,7 +636,7 @@
          </property>
          <layout class="QGridLayout" name="gridLayout_10">
           <item row="0" column="0" rowspan="2">
-           <widget class="QSlider" name="verticalSlider_7">
+           <widget class="QSlider" name="sldUnderstand">
             <property name="enabled">
              <bool>false</bool>
             </property>
@@ -714,7 +714,7 @@
         </spacer>
        </item>
        <item row="3" column="1">
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="btnCall">
          <property name="text">
           <string>Виклик</string>
          </property>
@@ -725,7 +725,7 @@
         </widget>
        </item>
        <item row="3" column="2">
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="btnCallCancel">
          <property name="text">
           <string>Відмінити</string>
          </property>
