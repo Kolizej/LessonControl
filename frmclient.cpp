@@ -16,9 +16,9 @@ frmClient::frmClient(QWidget *parent) :
 
     //начальные параметры для структуры
     cInfo.s_hostName = QHostInfo::localHostName();
-    cInfo.s_understanding = clsEnums::Understand;
-    cInfo.s_lessonTemp = clsEnums::SpeedNormal;
-    cInfo.s_volume = clsEnums::VolumeNormal;
+    cInfo.s_understanding = QString::number(clsEnums::Understand);
+    cInfo.s_lessonTemp = QString::number(clsEnums::SpeedNormal);
+    cInfo.s_volume = QString::number(clsEnums::VolumeNormal);
     cInfo.s_status = "online";
 
     sendMessage("online");
@@ -41,6 +41,10 @@ void frmClient::sendMessage(QString status)
     connectToServer(p_server,p_port.toUInt());
     cInfo.s_status = status;
     QByteArray array = makeMessageString().toAscii();
+
+    //msg.setText(makeMessageString());
+    //msg.exec();
+
     str_message = array.data();
 
     client.write(str_message,100);
@@ -83,10 +87,9 @@ void frmClient::on_btnUnderstand_toggled(bool checked)
     if(checked)
     {
         ui->btnNotUnderstand->setChecked(false);
+        cInfo.s_understanding = QString::number(clsEnums::Understand);
+        sendMessage("online");
     }
-    cInfo.s_understanding = QString::number(clsEnums::Understand);
-    sendMessage("online");
-
 }
 
 void frmClient::on_btnNotUnderstand_toggled(bool checked)
@@ -94,9 +97,9 @@ void frmClient::on_btnNotUnderstand_toggled(bool checked)
     if(checked)
     {
         ui->btnUnderstand->setChecked(false);
-    }
-    cInfo.s_understanding = QString::number(clsEnums::NotUnderstand);
-    sendMessage("online");
+        cInfo.s_understanding = QString::number(clsEnums::NotUnderstand);
+        sendMessage("online");
+    }    
 }
 
 void frmClient::on_btnSpeedHigh_toggled(bool checked)
@@ -105,9 +108,9 @@ void frmClient::on_btnSpeedHigh_toggled(bool checked)
     {
         ui->btnSpeedLow->setChecked(false);
         ui->btnSpeedNormal->setChecked(false);
-    }
-    cInfo.s_lessonTemp = QString::number(clsEnums::SpeedHigh);
-    sendMessage("online");
+        cInfo.s_lessonTemp = QString::number(clsEnums::SpeedHigh);
+        sendMessage("online");
+    }    
 }
 
 void frmClient::on_btnSpeedNormal_toggled(bool checked)
@@ -116,9 +119,9 @@ void frmClient::on_btnSpeedNormal_toggled(bool checked)
     {
         ui->btnSpeedLow->setChecked(false);
         ui->btnSpeedHigh->setChecked(false);
-    }
-    cInfo.s_lessonTemp = QString::number(clsEnums::SpeedNormal);
-    sendMessage("online");
+        cInfo.s_lessonTemp = QString::number(clsEnums::SpeedNormal);
+        sendMessage("online");
+    }    
 }
 
 void frmClient::on_btnSpeedLow_toggled(bool checked)
@@ -127,9 +130,9 @@ void frmClient::on_btnSpeedLow_toggled(bool checked)
     {
         ui->btnSpeedNormal->setChecked(false);
         ui->btnSpeedHigh->setChecked(false);
-    }
-    cInfo.s_lessonTemp = QString::number(clsEnums::SpeedLow);
-    sendMessage("online");
+        cInfo.s_lessonTemp = QString::number(clsEnums::SpeedLow);
+        sendMessage("online");
+    }    
 }
 
 void frmClient::on_btnVolumeHigh_toggled(bool checked)
@@ -138,9 +141,9 @@ void frmClient::on_btnVolumeHigh_toggled(bool checked)
     {
         ui->btnVolumeNormal->setChecked(false);
         ui->btnVolumeLow->setChecked(false);
-    }
-    cInfo.s_volume = QString::number(clsEnums::VolumeHigh);
-    sendMessage("online");
+        cInfo.s_volume = QString::number(clsEnums::VolumeHigh);
+        sendMessage("online");
+    }    
 }
 
 void frmClient::on_btnVolumeNormal_toggled(bool checked)
@@ -149,9 +152,9 @@ void frmClient::on_btnVolumeNormal_toggled(bool checked)
     {
         ui->btnVolumeHigh->setChecked(false);
         ui->btnVolumeLow->setChecked(false);
-    }
-    cInfo.s_volume = QString::number(clsEnums::VolumeNormal);
-    sendMessage("online");
+        cInfo.s_volume = QString::number(clsEnums::VolumeNormal);
+        sendMessage("online");
+    }    
 }
 
 void frmClient::on_btnVolumeLow_toggled(bool checked)
@@ -160,7 +163,7 @@ void frmClient::on_btnVolumeLow_toggled(bool checked)
     {
         ui->btnVolumeNormal->setChecked(false);
         ui->btnVolumeHigh->setChecked(false);
-    }
-    cInfo.s_volume = QString::number(clsEnums::VolumeLow);
-    sendMessage("online");
+        cInfo.s_volume = QString::number(clsEnums::VolumeLow);
+        sendMessage("online");
+    }    
 }

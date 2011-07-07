@@ -97,7 +97,7 @@
    <item row="1" column="2">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tabMain">
       <attribute name="icon">
@@ -131,10 +131,13 @@
 }</string>
             </property>
             <property name="minimum">
-             <number>1</number>
+             <number>0</number>
             </property>
             <property name="maximum">
-             <number>3</number>
+             <number>2</number>
+            </property>
+            <property name="value">
+             <number>0</number>
             </property>
             <property name="orientation">
              <enum>Qt::Vertical</enum>
@@ -218,10 +221,13 @@
 }</string>
             </property>
             <property name="minimum">
-             <number>1</number>
+             <number>0</number>
             </property>
             <property name="maximum">
-             <number>3</number>
+             <number>2</number>
+            </property>
+            <property name="value">
+             <number>0</number>
             </property>
             <property name="orientation">
              <enum>Qt::Vertical</enum>
@@ -302,10 +308,13 @@
 }</string>
             </property>
             <property name="minimum">
-             <number>1</number>
+             <number>0</number>
             </property>
             <property name="maximum">
-             <number>4</number>
+             <number>3</number>
+            </property>
+            <property name="value">
+             <number>0</number>
             </property>
             <property name="orientation">
              <enum>Qt::Vertical</enum>
@@ -343,7 +352,7 @@
              </font>
             </property>
             <property name="text">
-             <string>75%</string>
+             <string>75-90%</string>
             </property>
            </widget>
           </item>
@@ -356,7 +365,7 @@
              </font>
             </property>
             <property name="text">
-             <string>50%</string>
+             <string>50-75%</string>
             </property>
            </widget>
           </item>
@@ -399,10 +408,13 @@
 }</string>
             </property>
             <property name="minimum">
-             <number>1</number>
+             <number>0</number>
             </property>
             <property name="maximum">
-             <number>2</number>
+             <number>1</number>
+            </property>
+            <property name="value">
+             <number>0</number>
             </property>
             <property name="orientation">
              <enum>Qt::Vertical</enum>
@@ -481,10 +493,13 @@
 }</string>
             </property>
             <property name="minimum">
-             <number>1</number>
+             <number>0</number>
             </property>
             <property name="maximum">
-             <number>3</number>
+             <number>2</number>
+            </property>
+            <property name="value">
+             <number>0</number>
             </property>
             <property name="orientation">
              <enum>Qt::Vertical</enum>
@@ -565,10 +580,13 @@
 }</string>
             </property>
             <property name="minimum">
-             <number>1</number>
+             <number>0</number>
             </property>
             <property name="maximum">
-             <number>3</number>
+             <number>2</number>
+            </property>
+            <property name="value">
+             <number>0</number>
             </property>
             <property name="orientation">
              <enum>Qt::Vertical</enum>
@@ -649,10 +667,13 @@
 }</string>
             </property>
             <property name="minimum">
-             <number>1</number>
+             <number>0</number>
             </property>
             <property name="maximum">
-             <number>2</number>
+             <number>1</number>
+            </property>
+            <property name="value">
+             <number>0</number>
             </property>
             <property name="orientation">
              <enum>Qt::Vertical</enum>

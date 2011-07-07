@@ -13,6 +13,7 @@ frmServer::frmServer(QWidget *parent) :
     moveWindowToCenter();
     connect(&server,SIGNAL(newConnection()),this,SLOT(acceptConnection()));
     server.listen(QHostAddress::Any,p_port.toUInt());
+    setParams();
 }
 
 frmServer::~frmServer()
@@ -76,9 +77,7 @@ void frmServer::parseMessage(QString message)
             {
                 if(list_ci.at(i).s_hostName == ci.s_hostName)
                 {
-                    list_ci.value(i).s_lessonTemp = ci.s_lessonTemp;
-                    list_ci.value(i).s_understanding = ci.s_understanding;
-                    list_ci.value(i).s_volume = ci.s_volume;
+                    list_ci.replace(i,ci);
                 }
             }
         }
@@ -92,27 +91,98 @@ void frmServer::parseMessage(QString message)
                 list_ci.removeAt(i);
             }
         }
+
     }
 
     setParams();
+}
+
+void frmServer::setMainParams()
+{
+    //средний темп лекции
+    int m_temp = 0;
+
+    for(int i = 0;i<list_ci.count();i++)
+    {
+        m_temp+=list_ci.at(i).s_lessonTemp.toInt();
+    }
+
+    m_temp = m_temp/list_ci.count();
+    ui->slmTemp->setValue(m_temp);
+
+    //средн€€ громкость
+    int m_volume = 0;
+
+    for(int i = 0;i<list_ci.count();i++)
+    {
+        m_volume+=list_ci.at(i).s_volume.toInt();
+    }
+
+    m_volume = m_volume/list_ci.count();
+    ui->slmVolume->setValue(m_volume);
+
+    //среднее усвоение материала
+    int m_understand = 0;
+
+    for(int i = 0;i<list_ci.count();i++)
+    {
+        m_understand+=list_ci.at(i).s_understanding.toInt();
+    }
+
+    m_understand = m_understand/list_ci.count();
+    ui->slmUnderstand->setValue(m_understand);
+
+    //уровень понимани€ группы
+    int midUnderstand = m_understand/list_ci.count();
+
+    if(midUnderstand<=0.5)
+        ui->slmLevel->setValue(0);
+    else if((midUnderstand>0.5)&&(midUnderstand<=0.75))
+        ui->slmLevel->setValue(1);
+    else if((midUnderstand>0.75)&&(midUnderstand<=0.9))
+        ui->slmLevel->setValue(2);
+    else if(midUnderstand>0.9)
+        ui->slmLevel->setValue(2);
+
+}
+
+void frmServer::setDefaultParams()
+{
+    ui->slmLevel->setValue(0);
+    ui->slmTemp->setValue(1);
+    ui->slmUnderstand->setValue(1);
+    ui->slmVolume->setValue(1);
+    ui->tabDetail->setEnabled(false);
 }
 
 void frmServer::setParams()
 {
     ui->listWorkstations->clear();
 
-    foreach(ClientInfo cip,list_ci)
+    if(list_ci.count()>0)
     {
-        if(cip.s_status == "online")
+        ui->tabDetail->setEnabled(true);
+
+        foreach(ClientInfo cip,list_ci)
         {
-            QListWidgetItem *litem = new QListWidgetItem(ui->listWorkstations);
-            litem->setIcon(QIcon(":/icons/itemico/K001.ico"));
-            litem->setText(cip.s_hostName);
-            ui->listWorkstations->addItem(litem);
+            if(cip.s_status == "online")
+            {
+                QListWidgetItem *litem = new QListWidgetItem(ui->listWorkstations);
+                litem->setIcon(QIcon(":/icons/itemico/K001.ico"));
+                litem->setText(cip.s_hostName);
+                ui->listWorkstations->addItem(litem);
+            }
         }
+        setMainParams();
+    }
+    else
+    {
+        setDefaultParams();
     }
 
     ui->lblCount->setText(QString::number(ui->listWorkstations->count()));
+
+
 }
 
 void frmServer::closeEvent(QCloseEvent *ce)

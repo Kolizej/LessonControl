@@ -38,6 +38,8 @@ private slots:
     void parseMessage(QString message);
     void setParams();
     bool isClientInfoExists(ClientInfo clInf);
+    void setMainParams();
+    void setDefaultParams();
 };
 
 #endif // FRMSERVER_H
