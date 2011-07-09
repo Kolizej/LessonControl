@@ -97,43 +97,51 @@ void frmServer::parseMessage(QString message)
     setParams();
 }
 
+void frmServer::setWorkstationParams(QString wsname)
+{
+    for(int i = 0;i<list_ci.count();i++)
+    {
+        if(list_ci.at(i).s_hostName == wsname)
+        {
+            //темп лекции
+            ui->sldTemp->setValue(list_ci.at(i).s_lessonTemp.toInt());
+            //усвоение материала
+            ui->sldUnderstand->setValue(list_ci.at(i).s_understanding.toInt());
+            //громкость
+            ui->sldVolume->setValue(list_ci.at(i).s_volume.toInt());
+        }
+    }
+}
+
 void frmServer::setMainParams()
 {
     //средний темп лекции
     int m_temp = 0;
-
-    for(int i = 0;i<list_ci.count();i++)
-    {
-        m_temp+=list_ci.at(i).s_lessonTemp.toInt();
-    }
-
-    m_temp = m_temp/list_ci.count();
-    ui->slmTemp->setValue(m_temp);
-
     //средн€€ громкость
     int m_volume = 0;
-
-    for(int i = 0;i<list_ci.count();i++)
-    {
-        m_volume+=list_ci.at(i).s_volume.toInt();
-    }
-
-    m_volume = m_volume/list_ci.count();
-    ui->slmVolume->setValue(m_volume);
-
     //среднее усвоение материала
     int m_understand = 0;
 
-    for(int i = 0;i<list_ci.count();i++)
+    int list_cnt = list_ci.count();
+
+    for(int i = 0;i<list_cnt;i++)
     {
+        m_temp+=list_ci.at(i).s_lessonTemp.toInt();
+        m_volume+=list_ci.at(i).s_volume.toInt();
         m_understand+=list_ci.at(i).s_understanding.toInt();
     }
 
-    m_understand = m_understand/list_ci.count();
+    m_temp = m_temp/list_cnt;
+    ui->slmTemp->setValue(m_temp);
+
+    m_volume = m_volume/list_cnt;
+    ui->slmVolume->setValue(m_volume);
+
+    m_understand = m_understand/list_cnt;
     ui->slmUnderstand->setValue(m_understand);
 
     //уровень понимани€ группы
-    int midUnderstand = m_understand/list_ci.count();
+    int midUnderstand = m_understand/list_cnt;
 
     if(midUnderstand<=0.5)
         ui->slmLevel->setValue(0);
@@ -152,6 +160,9 @@ void frmServer::setDefaultParams()
     ui->slmTemp->setValue(1);
     ui->slmUnderstand->setValue(1);
     ui->slmVolume->setValue(1);
+    ui->sldTemp->setValue(0);
+    ui->sldUnderstand->setValue(0);
+    ui->sldVolume->setValue(0);
     ui->tabDetail->setEnabled(false);
 }
 
@@ -174,6 +185,12 @@ void frmServer::setParams()
             }
         }
         setMainParams();
+
+        if(ui->listWorkstations->count()>0)
+        {
+            if(ui->listWorkstations->selectedItems().count()>0)
+                setWorkstationParams(ui->listWorkstations->selectedItems().first()->text());
+        }
     }
     else
     {
@@ -207,4 +224,10 @@ void frmServer::closeEvent(QCloseEvent *ce)
             ce->ignore();
         }
     }
+}
+
+void frmServer::on_listWorkstations_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous)
+{
+    if(ui->listWorkstations->isItemSelected(current))
+        setWorkstationParams(current->text());
 }

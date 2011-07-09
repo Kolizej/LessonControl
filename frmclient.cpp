@@ -21,6 +21,7 @@ frmClient::frmClient(QWidget *parent) :
     cInfo.s_volume = QString::number(clsEnums::VolumeNormal);
     cInfo.s_status = "online";
 
+    ui->lblWorkstation->setText(cInfo.s_hostName = QHostInfo::localHostName());
     sendMessage("online");
 }
 
@@ -42,9 +43,6 @@ void frmClient::sendMessage(QString status)
     cInfo.s_status = status;
     QByteArray array = makeMessageString().toAscii();
 
-    //msg.setText(makeMessageString());
-    //msg.exec();
-
     str_message = array.data();
 
     client.write(str_message,100);
@@ -59,7 +57,7 @@ void frmClient::sendCloseMessage()
 void frmClient::connectToServer(QString server_adress, quint16 server_port)
 {
     QHostAddress ha(server_adress);
-    client.connectToHost(ha,server_port);
+    client.connectToHost(ha,server_port);    
 }
 
 QString frmClient::makeMessageString()
