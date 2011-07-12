@@ -25,8 +25,8 @@ public:
     //уровень понимания
     enum enumUnderstand
     {
-        Understand = 0,
-        NotUnderstand = 1
+        NotUnderstand = 0,
+        Understand = 1
     };
 };
 

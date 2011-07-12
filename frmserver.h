@@ -7,6 +7,7 @@
 #include "QtNetwork/QTcpSocket"
 #include "ClientInformation.h"
 #include "QMessageBox"
+#include "QListWidgetItem"
 
 namespace Ui {
     class frmServer;
@@ -37,6 +38,11 @@ private slots:
     void startRead();
     void parseMessage(QString message);
     void setParams();
+    bool isClientInfoExists(ClientInfo clInf);
+    void setMainParams();
+    void setDefaultParams();
+    void setWorkstationParams(QString wsname);
+    void on_listWorkstations_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous);
 };
 
 #endif // FRMSERVER_H

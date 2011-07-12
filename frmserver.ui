@@ -118,7 +118,7 @@
          </property>
          <layout class="QGridLayout" name="gridLayout_4">
           <item row="0" column="0" rowspan="3">
-           <widget class="QSlider" name="verticalSlider">
+           <widget class="QSlider" name="slmTemp">
             <property name="enabled">
              <bool>false</bool>
             </property>
@@ -131,10 +131,13 @@
 }</string>
             </property>
             <property name="minimum">
-             <number>1</number>
+             <number>0</number>
             </property>
             <property name="maximum">
-             <number>3</number>
+             <number>2</number>
+            </property>
+            <property name="value">
+             <number>0</number>
             </property>
             <property name="orientation">
              <enum>Qt::Vertical</enum>
@@ -205,7 +208,7 @@
          </property>
          <layout class="QGridLayout" name="gridLayout_5">
           <item row="0" column="0" rowspan="3">
-           <widget class="QSlider" name="verticalSlider_2">
+           <widget class="QSlider" name="slmVolume">
             <property name="enabled">
              <bool>false</bool>
             </property>
@@ -218,10 +221,13 @@
 }</string>
             </property>
             <property name="minimum">
-             <number>1</number>
+             <number>0</number>
             </property>
             <property name="maximum">
-             <number>3</number>
+             <number>2</number>
+            </property>
+            <property name="value">
+             <number>0</number>
             </property>
             <property name="orientation">
              <enum>Qt::Vertical</enum>
@@ -289,7 +295,7 @@
          </property>
          <layout class="QGridLayout" name="gridLayout_7">
           <item row="0" column="0" rowspan="4">
-           <widget class="QSlider" name="verticalSlider_4">
+           <widget class="QSlider" name="slmLevel">
             <property name="enabled">
              <bool>false</bool>
             </property>
@@ -302,10 +308,13 @@
 }</string>
             </property>
             <property name="minimum">
-             <number>1</number>
+             <number>0</number>
             </property>
             <property name="maximum">
-             <number>4</number>
+             <number>3</number>
+            </property>
+            <property name="value">
+             <number>0</number>
             </property>
             <property name="orientation">
              <enum>Qt::Vertical</enum>
@@ -343,7 +352,7 @@
              </font>
             </property>
             <property name="text">
-             <string>75%</string>
+             <string>75-90%</string>
             </property>
            </widget>
           </item>
@@ -356,7 +365,7 @@
              </font>
             </property>
             <property name="text">
-             <string>50%</string>
+             <string>50-75%</string>
             </property>
            </widget>
           </item>
@@ -386,7 +395,7 @@
          </property>
          <layout class="QGridLayout" name="gridLayout_6">
           <item row="0" column="0" rowspan="2">
-           <widget class="QSlider" name="verticalSlider_3">
+           <widget class="QSlider" name="slmUnderstand">
             <property name="enabled">
              <bool>false</bool>
             </property>
@@ -399,10 +408,13 @@
 }</string>
             </property>
             <property name="minimum">
-             <number>1</number>
+             <number>0</number>
             </property>
             <property name="maximum">
-             <number>2</number>
+             <number>1</number>
+            </property>
+            <property name="value">
+             <number>0</number>
             </property>
             <property name="orientation">
              <enum>Qt::Vertical</enum>
@@ -468,7 +480,7 @@
          </property>
          <layout class="QGridLayout" name="gridLayout_8">
           <item row="0" column="0" rowspan="3">
-           <widget class="QSlider" name="verticalSlider_5">
+           <widget class="QSlider" name="sldTemp">
             <property name="enabled">
              <bool>false</bool>
             </property>
@@ -481,10 +493,13 @@
 }</string>
             </property>
             <property name="minimum">
-             <number>1</number>
+             <number>0</number>
             </property>
             <property name="maximum">
-             <number>3</number>
+             <number>2</number>
+            </property>
+            <property name="value">
+             <number>0</number>
             </property>
             <property name="orientation">
              <enum>Qt::Vertical</enum>
@@ -552,7 +567,7 @@
          </property>
          <layout class="QGridLayout" name="gridLayout_11">
           <item row="0" column="0" rowspan="3">
-           <widget class="QSlider" name="verticalSlider_8">
+           <widget class="QSlider" name="sldVolume">
             <property name="enabled">
              <bool>false</bool>
             </property>
@@ -565,10 +580,13 @@
 }</string>
             </property>
             <property name="minimum">
-             <number>1</number>
+             <number>0</number>
             </property>
             <property name="maximum">
-             <number>3</number>
+             <number>2</number>
+            </property>
+            <property name="value">
+             <number>0</number>
             </property>
             <property name="orientation">
              <enum>Qt::Vertical</enum>
@@ -636,7 +654,7 @@
          </property>
          <layout class="QGridLayout" name="gridLayout_10">
           <item row="0" column="0" rowspan="2">
-           <widget class="QSlider" name="verticalSlider_7">
+           <widget class="QSlider" name="sldUnderstand">
             <property name="enabled">
              <bool>false</bool>
             </property>
@@ -649,10 +667,13 @@
 }</string>
             </property>
             <property name="minimum">
-             <number>1</number>
+             <number>0</number>
             </property>
             <property name="maximum">
-             <number>2</number>
+             <number>1</number>
+            </property>
+            <property name="value">
+             <number>0</number>
             </property>
             <property name="orientation">
              <enum>Qt::Vertical</enum>
@@ -714,7 +735,7 @@
         </spacer>
        </item>
        <item row="3" column="1">
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="btnCall">
          <property name="text">
           <string>Виклик</string>
          </property>
@@ -725,7 +746,7 @@
         </widget>
        </item>
        <item row="3" column="2">
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="btnCallCancel">
          <property name="text">
           <string>Відмінити</string>
          </property>

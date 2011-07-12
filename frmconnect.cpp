@@ -4,6 +4,7 @@
 #include "frmclient.h"
 #include "frmserver.h"
 #include "clsglobal.h"
+#include "QMessageBox"
 
 frmConnect::frmConnect(QWidget *parent) :
     QWidget(parent),
@@ -51,11 +52,17 @@ void frmConnect::moveWindowToCenter()
     move(frect.topLeft());
 }
 
+bool frmConnect::testConnection(QString server_adress, quint16 server_port)
+{
+    bool res = true;
+    return res;
+}
+
 void frmConnect::on_btnOk_clicked()
 {
     QHostAddress adressValidator;
 
-    if(adressValidator.setAddress(ui->txtServer->text()))
+    if(adressValidator.setAddress(ui->txtServer->text()) && testConnection(ui->txtServer->text(),ui->txtPort->text().toUInt()))
     {
         p_server = ui->txtServer->text();
         p_port = ui->txtPort->text();
@@ -74,7 +81,8 @@ void frmConnect::on_btnOk_clicked()
     }
     else
     {
+        QMessageBox msg;
+        msg.warning(this,tr("Пiдключення"),tr("Сервер недоступний, або невiрнi параметри пiдключення."),QMessageBox::Ok);
         ui->txtServer->setFocus();
-        ui->txtServer->setText(tr("Введіть корректний IP"));
     }
 }
