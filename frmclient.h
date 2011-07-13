@@ -5,6 +5,8 @@
 #include <QtNetwork>
 #include "ClientInformation.h"
 #include "QMessageBox"
+#include "QtNetwork/QTcpServer"
+#include "QtNetwork/QTcpSocket"
 
 namespace Ui {
     class frmClient;
@@ -21,6 +23,8 @@ public:
 private:
     Ui::frmClient *ui;
     QTcpSocket client;
+    QTcpServer server;
+    QTcpSocket *client_call;
     char* str_message;
     ClientInfo cInfo;
     QMessageBox msg;
@@ -42,6 +46,9 @@ private slots:
     void on_btnVolumeHigh_toggled(bool checked);
     void on_btnVolumeNormal_toggled(bool checked);
     void on_btnVolumeLow_toggled(bool checked);
+    void acceptConnections();
+    void startRead();
+    void parseMessage(QString message);
 };
 
 #endif // FRMCLIENT_H

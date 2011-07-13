@@ -12,16 +12,25 @@ frmClient::frmClient(QWidget *parent) :
     ui(new Ui::frmClient)
 {
     ui->setupUi(this);
+
+    //переместим окно в центр экрана
     moveWindowToCenter();
 
-    //начальные параметры для структуры
+    //слушающий сервер (для метода вызова)
+    connect(&server,SIGNAL(newConnection()),this,SLOT(acceptConnection()));
+    server.listen(QHostAddress::Any,p_port.toUInt());
+
+    //начальные параметры для структуры сообщения
     cInfo.s_hostName = QHostInfo::localHostName();
     cInfo.s_understanding = QString::number(clsEnums::Understand);
     cInfo.s_lessonTemp = QString::number(clsEnums::SpeedNormal);
     cInfo.s_volume = QString::number(clsEnums::VolumeNormal);
     cInfo.s_status = "online";
 
-    ui->lblWorkstation->setText(cInfo.s_hostName = QHostInfo::localHostName());
+    //установка названия рабочего места
+    ui->lblWorkstation->setText(QHostInfo::localHostName());
+
+    //посылаем серверу сообщение, что рабочая станция в сети
     sendMessage("online");
 }
 
@@ -30,6 +39,7 @@ frmClient::~frmClient()
     delete ui;
 }
 
+//перемещает окно в центр экрана
 void frmClient::moveWindowToCenter()
 {
     QRect frect = frameGeometry();
@@ -37,6 +47,36 @@ void frmClient::moveWindowToCenter()
     move(frect.topLeft());
 }
 
+//слот читает данные из сокета
+void frmClient::startRead()
+{
+    char buffer[1024] = {0};
+    client_call->read(buffer,client_call->bytesAvailable());
+    parseMessage((QString)buffer);
+    client_call->close();
+}
+
+//слот обрабатывает входящие подключения
+void frmClient::acceptConnections()
+{
+    client_call = server.nextPendingConnection();
+    connect(client_call,SIGNAL(readyRead()),this,SLOT(startRead()));
+}
+
+//слот разбирает тип входящего сообщения и устанавливает реакцию на него
+void frmClient::parseMessage(QString message)
+{
+    if(message == "call_start")
+    {
+        ui->indicator->setStyleSheet("QLineEdit {background-color: red}");
+    }
+    else
+    {
+        ui->indicator->styleSheet().clear();
+    }
+}
+
+//слот отсылки сообщений
 void frmClient::sendMessage(QString status)
 {
     connectToServer(p_server,p_port.toUInt());
@@ -49,17 +89,20 @@ void frmClient::sendMessage(QString status)
 
 }
 
+//слот отсылки сообщения о закрытии приложения
 void frmClient::sendCloseMessage()
 {
     sendMessage("offline");
 }
 
+//слот для подключения к серверу
 void frmClient::connectToServer(QString server_adress, quint16 server_port)
 {
     QHostAddress ha(server_adress);
     client.connectToHost(ha,server_port);    
 }
 
+//слот создает строку сообщения в необходимом формате
 QString frmClient::makeMessageString()
 {    
     QString res;
@@ -68,6 +111,7 @@ QString frmClient::makeMessageString()
     return res;
 }
 
+//реакция на закрытие приложения
 void frmClient::closeEvent(QCloseEvent *ce)
 {
     sendCloseMessage();
@@ -80,6 +124,7 @@ void frmClient::closeEvent(QCloseEvent *ce)
     }
 }
 
+//обработчик кнопки "Понятно"
 void frmClient::on_btnUnderstand_toggled(bool checked)
 {
     if(checked)
@@ -90,6 +135,7 @@ void frmClient::on_btnUnderstand_toggled(bool checked)
     }
 }
 
+//обработчик кнопки "Не понятно"
 void frmClient::on_btnNotUnderstand_toggled(bool checked)
 {
     if(checked)
@@ -100,6 +146,7 @@ void frmClient::on_btnNotUnderstand_toggled(bool checked)
     }    
 }
 
+//обработчик кнопки "Быстро"
 void frmClient::on_btnSpeedHigh_toggled(bool checked)
 {
     if(checked)
@@ -111,6 +158,7 @@ void frmClient::on_btnSpeedHigh_toggled(bool checked)
     }    
 }
 
+//обработчик кнопки "Нормально" (скорость)
 void frmClient::on_btnSpeedNormal_toggled(bool checked)
 {
     if(checked)
@@ -122,6 +170,7 @@ void frmClient::on_btnSpeedNormal_toggled(bool checked)
     }    
 }
 
+//обработчик кнопки "Медленно"
 void frmClient::on_btnSpeedLow_toggled(bool checked)
 {
     if(checked)
@@ -133,6 +182,7 @@ void frmClient::on_btnSpeedLow_toggled(bool checked)
     }    
 }
 
+//обработчик кнопки "Громко"
 void frmClient::on_btnVolumeHigh_toggled(bool checked)
 {
     if(checked)
@@ -144,6 +194,7 @@ void frmClient::on_btnVolumeHigh_toggled(bool checked)
     }    
 }
 
+//обработчик кнопки "Нормально" (громкость)
 void frmClient::on_btnVolumeNormal_toggled(bool checked)
 {
     if(checked)
@@ -155,6 +206,7 @@ void frmClient::on_btnVolumeNormal_toggled(bool checked)
     }    
 }
 
+//обработчик кнопки "Тихо"
 void frmClient::on_btnVolumeLow_toggled(bool checked)
 {
     if(checked)
