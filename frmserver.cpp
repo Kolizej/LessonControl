@@ -180,9 +180,36 @@ void frmServer::connectToServer(QString server_adress, quint16 server_port)
 
 void frmServer::on_btnCall_clicked()
 {
-    ui->listWorkstations->currentItem()->setIcon(QIcon(":/icons/itemico/bell.png"));
-    QString _hostname = ui->listWorkstations->currentItem()->text();
-    sendMessage("call_start",_hostname);
+    ClientInfo ci_row;
+    ci_row.s_hostName = list_ci.at(ui->listWorkstations->currentRow()).s_hostName;
+    ci_row.s_ipadress = list_ci.at(ui->listWorkstations->currentRow()).s_ipadress;
+    ci_row.s_isCalled = "true";
+    ci_row.s_lessonTemp = list_ci.at(ui->listWorkstations->currentRow()).s_lessonTemp;
+    ci_row.s_status = list_ci.at(ui->listWorkstations->currentRow()).s_status;
+    ci_row.s_understanding = list_ci.at(ui->listWorkstations->currentRow()).s_understanding;
+    ci_row.s_volume = list_ci.at(ui->listWorkstations->currentRow()).s_volume;
+
+    list_ci.replace(ui->listWorkstations->currentRow(),ci_row);
+
+    QString _hostadress = ci_row.s_ipadress;
+    sendMessage("true",_hostadress);
+}
+
+void frmServer::on_btnCallCancel_clicked()
+{
+    ClientInfo ci_row;
+    ci_row.s_hostName = list_ci.at(ui->listWorkstations->currentRow()).s_hostName;
+    ci_row.s_ipadress = list_ci.at(ui->listWorkstations->currentRow()).s_ipadress;
+    ci_row.s_isCalled = "false";
+    ci_row.s_lessonTemp = list_ci.at(ui->listWorkstations->currentRow()).s_lessonTemp;
+    ci_row.s_status = list_ci.at(ui->listWorkstations->currentRow()).s_status;
+    ci_row.s_understanding = list_ci.at(ui->listWorkstations->currentRow()).s_understanding;
+    ci_row.s_volume = list_ci.at(ui->listWorkstations->currentRow()).s_volume;
+
+    list_ci.replace(ui->listWorkstations->currentRow(),ci_row);
+
+    QString _hostadress = ci_row.s_ipadress;
+    sendMessage("false",_hostadress);
 }
 
 void frmServer::setDefaultParams()
@@ -210,7 +237,12 @@ void frmServer::setParams()
             if(cip.s_status == "online")
             {
                 QListWidgetItem *litem = new QListWidgetItem(ui->listWorkstations);
-                litem->setIcon(QIcon(":/icons/itemico/K001.ico"));
+
+                if(cip.s_isCalled == "true")
+                    litem->setIcon(QIcon(":/icons/itemico/bell.png"));
+                else
+                    litem->setIcon(QIcon(":/icons/itemico/K001.ico"));
+
                 litem->setText(cip.s_hostName);
                 ui->listWorkstations->addItem(litem);
             }
@@ -268,4 +300,6 @@ void frmServer::on_listWorkstations_currentRowChanged(int currentRow)
         setWorkstationParams(ws_name);
     }
 }
+
+
 

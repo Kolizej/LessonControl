@@ -49,6 +49,7 @@ private slots:
     void connectToServer(QString server_adress, quint16 server_port);
     //void on_listWorkstations_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous);
     void on_btnCall_clicked();
+    void on_btnCallCancel_clicked();
 };
 
 #endif // FRMSERVER_H
