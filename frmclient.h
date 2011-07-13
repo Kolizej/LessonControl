@@ -23,8 +23,8 @@ public:
 private:
     Ui::frmClient *ui;
     QTcpSocket client;
-    QTcpServer server;
-    QTcpSocket *client_call;
+    QTcpServer serverOnClient;
+    QTcpSocket *clientForCall;
     char* str_message;
     ClientInfo cInfo;
     QMessageBox msg;

@@ -18,8 +18,9 @@ frmClient::frmClient(QWidget *parent) :
     moveWindowToCenter();
 
     //слушающий сервер (для метода вызова)
-    connect(&server,SIGNAL(newConnection()),this,SLOT(acceptSertverConnection()));
-    server.listen(QHostAddress::Any,p_port.toUInt());
+    connect(&serverOnClient,SIGNAL(newConnection()),this,SLOT(acceptServerConnections()));
+    QHostAddress ha(p_server);
+    serverOnClient.listen(ha,p_port.toUInt()+1);
 
     //начальные параметры для структуры сообщения
     cInfo.s_ipadress = getLocalIP();
@@ -34,8 +35,6 @@ frmClient::frmClient(QWidget *parent) :
 
     //посылаем серверу сообщение, что рабочая станция в сети
     sendMessage("online");
-
-    getLocalIP();
 }
 
 frmClient::~frmClient()
@@ -69,28 +68,28 @@ void frmClient::moveWindowToCenter()
 void frmClient::startRead()
 {
     char buffer[1024] = {0};
-    client_call->read(buffer,client_call->bytesAvailable());
+    clientForCall->read(buffer,clientForCall->bytesAvailable());
     parseMessage((QString)buffer);
-    client_call->close();
+    clientForCall->close();
 }
 
 //слот обрабатывает входящие подключения
 void frmClient::acceptServerConnections()
 {
-    client_call = server.nextPendingConnection();
-    connect(client_call,SIGNAL(readyRead()),this,SLOT(startRead()));
+    clientForCall = serverOnClient.nextPendingConnection();
+    connect(clientForCall,SIGNAL(readyRead()),this,SLOT(startRead()));
 }
 
 //слот разбирает тип входящего сообщения и устанавливает реакцию на него
 void frmClient::parseMessage(QString message)
 {
-    if(message == "call_start")
+    if(message == "true")
     {
         ui->indicator->setStyleSheet("QLineEdit {background-color: red}");
     }
-    else
+    else if (message == "false")
     {
-        ui->indicator->styleSheet().clear();
+        ui->indicator->setStyleSheet("QLineEdit {background-color: green}");
     }
 }
 

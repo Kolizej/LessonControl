@@ -165,7 +165,7 @@ void frmServer::setMainParams()
 
 void frmServer::sendMessage(QString message_, QString host)
 {
-    connectToServer(p_server,p_port.toUInt());
+    connectToServer(host,p_port.toUInt()+1);
     QByteArray array = message_.toAscii();
     str_message = array.data();
 
