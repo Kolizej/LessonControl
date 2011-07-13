@@ -6,6 +6,7 @@
 #include "clsglobal.h"
 #include "QCloseEvent"
 #include "clsenums.h"
+#include "QNetworkInterface"
 
 frmClient::frmClient(QWidget *parent) :
     QWidget(parent),
@@ -17,10 +18,11 @@ frmClient::frmClient(QWidget *parent) :
     moveWindowToCenter();
 
     //слушающий сервер (для метода вызова)
-    connect(&server,SIGNAL(newConnection()),this,SLOT(acceptConnection()));
+    connect(&server,SIGNAL(newConnection()),this,SLOT(acceptSertverConnection()));
     server.listen(QHostAddress::Any,p_port.toUInt());
 
     //начальные параметры для структуры сообщения
+    cInfo.s_ipadress = getLocalIP();
     cInfo.s_hostName = QHostInfo::localHostName();
     cInfo.s_understanding = QString::number(clsEnums::Understand);
     cInfo.s_lessonTemp = QString::number(clsEnums::SpeedNormal);
@@ -32,11 +34,27 @@ frmClient::frmClient(QWidget *parent) :
 
     //посылаем серверу сообщение, что рабочая станция в сети
     sendMessage("online");
+
+    getLocalIP();
 }
 
 frmClient::~frmClient()
 {
     delete ui;
+}
+
+QString frmClient::getLocalIP()
+{
+    QString res;
+    QList<QHostAddress> hosts = QNetworkInterface::allAddresses();
+    hosts.removeOne(QHostAddress(0x7f000001));
+
+    for(int i = 0;i<hosts.count();i++)
+    {
+        res = hosts[i].toString();
+    }
+
+    return res;
 }
 
 //перемещает окно в центр экрана
@@ -57,7 +75,7 @@ void frmClient::startRead()
 }
 
 //слот обрабатывает входящие подключения
-void frmClient::acceptConnections()
+void frmClient::acceptServerConnections()
 {
     client_call = server.nextPendingConnection();
     connect(client_call,SIGNAL(readyRead()),this,SLOT(startRead()));
@@ -107,7 +125,7 @@ QString frmClient::makeMessageString()
 {    
     QString res;
     cInfo.s_hostName = QHostInfo::localHostName();
-    res+=cInfo.s_hostName+"|"+cInfo.s_lessonTemp+"|"+cInfo.s_understanding+"|"+cInfo.s_volume+"|"+cInfo.s_status;
+    res+=cInfo.s_hostName+"|"+cInfo.s_ipadress+"|"+cInfo.s_lessonTemp+"|"+cInfo.s_understanding+"|"+cInfo.s_volume+"|"+cInfo.s_status;
     return res;
 }
 

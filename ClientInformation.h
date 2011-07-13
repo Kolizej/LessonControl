@@ -7,10 +7,12 @@
 struct ClientInfo
 {
     QString s_hostName; //имя хоста
+    QString s_ipadress; //ip хоста
     QString s_lessonTemp; //темп лекции
     QString s_understanding; //уровень понимания
     QString s_volume; //громкость
     QString s_status; //offline или online
+    QString s_isCalled; //состояние вызова
 };
 
 #endif // CLIENTINFORMATION_H

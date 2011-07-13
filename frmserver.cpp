@@ -4,6 +4,7 @@
 #include "clsglobal.h"
 #include "QPushButton"
 #include "QCloseEvent"
+#include "clsenums.h"
 
 frmServer::frmServer(QWidget *parent) :
     QWidget(parent),
@@ -60,10 +61,11 @@ void frmServer::parseMessage(QString message)
 {
     QStringList struct_list =  message.split("|",QString::KeepEmptyParts);
     ci.s_hostName = struct_list.value(0);
-    ci.s_lessonTemp = struct_list.value(1);
-    ci.s_understanding = struct_list.value(2);
-    ci.s_volume = struct_list.value(3);
-    ci.s_status = struct_list.value(4);
+    ci.s_ipadress = struct_list.value(1);
+    ci.s_lessonTemp = struct_list.value(2);
+    ci.s_understanding = struct_list.value(3);
+    ci.s_volume = struct_list.value(4);
+    ci.s_status = struct_list.value(5);
 
     if(ci.s_status == "online")
     {
@@ -116,11 +118,11 @@ void frmServer::setWorkstationParams(QString wsname)
 void frmServer::setMainParams()
 {
     //средний темп лекции
-    int m_temp = 0;
+    float m_temp = 0;
     //средн€€ громкость
-    int m_volume = 0;
+    float m_volume = 0;
     //среднее усвоение материала
-    int m_understand = 0;
+    float m_understand = 0;
 
     int list_cnt = list_ci.count();
 
@@ -132,26 +134,55 @@ void frmServer::setMainParams()
     }
 
     m_temp = m_temp/list_cnt;
-    ui->slmTemp->setValue(m_temp);
+
+    QString str_temp;
+    str_temp.setNum(m_temp,'g',0);
+    ui->slmTemp->setValue(str_temp.toInt());
 
     m_volume = m_volume/list_cnt;
-    ui->slmVolume->setValue(m_volume);
+
+    QString str_volume;
+    str_volume.setNum(m_volume,'g',0);
+    ui->slmVolume->setValue(str_volume.toInt());
 
     m_understand = m_understand/list_cnt;
-    ui->slmUnderstand->setValue(m_understand);
+
+    QString str_understand;
+    str_understand.setNum(m_understand,'g',0);
+    ui->slmVolume->setValue(str_understand.toInt());
 
     //уровень понимани€ группы
-    int midUnderstand = m_understand/list_cnt;
-
-    if(midUnderstand<=0.5)
+    if(m_understand<=0.5)
         ui->slmLevel->setValue(0);
-    else if((midUnderstand>0.5)&&(midUnderstand<=0.75))
+    else if((m_understand>0.5)&&(m_understand<=0.75))
         ui->slmLevel->setValue(1);
-    else if((midUnderstand>0.75)&&(midUnderstand<=0.9))
+    else if((m_understand>0.75)&&(m_understand<=0.9))
         ui->slmLevel->setValue(2);
-    else if(midUnderstand>0.9)
-        ui->slmLevel->setValue(2);
+    else if(m_understand>0.9)
+        ui->slmLevel->setValue(3);
 
+}
+
+void frmServer::sendMessage(QString message_, QString host)
+{
+    connectToServer(p_server,p_port.toUInt());
+    QByteArray array = message_.toAscii();
+    str_message = array.data();
+
+    client_server.write(str_message,100);
+}
+
+void frmServer::connectToServer(QString server_adress, quint16 server_port)
+{
+    QHostAddress ha(server_adress);
+    client_server.connectToHost(ha,server_port);
+}
+
+void frmServer::on_btnCall_clicked()
+{
+    ui->listWorkstations->currentItem()->setIcon(QIcon(":/icons/itemico/bell.png"));
+    QString _hostname = ui->listWorkstations->currentItem()->text();
+    sendMessage("call_start",_hostname);
 }
 
 void frmServer::setDefaultParams()
@@ -226,8 +257,15 @@ void frmServer::closeEvent(QCloseEvent *ce)
     }
 }
 
-void frmServer::on_listWorkstations_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous)
+void frmServer::on_listWorkstations_currentRowChanged(int currentRow)
 {
-    if(ui->listWorkstations->isItemSelected(current))
-        setWorkstationParams(current->text());
+    QListWidgetItem *wi = ui->listWorkstations->item(currentRow);
+
+    if(wi!=0x0)
+    {
+        setMainParams();
+        QString ws_name = ui->listWorkstations->item(currentRow)->text();
+        setWorkstationParams(ws_name);
+    }
 }
+

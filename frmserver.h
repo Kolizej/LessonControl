@@ -28,6 +28,8 @@ private:
     ClientInfo ci;
     QList<ClientInfo> list_ci;
     QMessageBox msg;
+    char* str_message;
+    QTcpSocket client_server;
 
 protected:
     void closeEvent(QCloseEvent *ce);
@@ -42,7 +44,11 @@ private slots:
     void setMainParams();
     void setDefaultParams();
     void setWorkstationParams(QString wsname);
-    void on_listWorkstations_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous);
+    void on_listWorkstations_currentRowChanged(int currentRow);
+    void sendMessage(QString message_, QString host);
+    void connectToServer(QString server_adress, quint16 server_port);
+    //void on_listWorkstations_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous);
+    void on_btnCall_clicked();
 };
 
 #endif // FRMSERVER_H

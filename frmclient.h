@@ -46,9 +46,10 @@ private slots:
     void on_btnVolumeHigh_toggled(bool checked);
     void on_btnVolumeNormal_toggled(bool checked);
     void on_btnVolumeLow_toggled(bool checked);
-    void acceptConnections();
+    void acceptServerConnections();
     void startRead();
     void parseMessage(QString message);
+    QString getLocalIP();
 };
 
 #endif // FRMCLIENT_H
