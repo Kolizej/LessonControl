@@ -47,15 +47,15 @@ private slots:
     void on_listWorkstations_currentRowChanged(int currentRow);
     void sendMessage(QString message_, QString host);
     void connectToServer(QString server_adress, quint16 server_port);
-    //void on_listWorkstations_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous);
     void on_btnCall_clicked();
     void on_btnCallCancel_clicked();
-    void on_slmTemp_valueChanged(int value);
-    void on_slmVolume_valueChanged(int value);
-    void on_slmUnderstand_valueChanged(int value);
-    void on_sldTemp_valueChanged(int value);
-    void on_sldVolume_valueChanged(int value);
-    void on_sldUnderstand_valueChanged(int value);
+    void setMainTempPictures(int value);
+    void setMainVolumePictures(int value);
+    void setMainUnderstandPictures(int value);
+    void setWsTempPictures(int value);
+    void setWsVolumePictures(int value);
+    void setWsUnderstandPictures(int value);
+
 };
 
 #endif // FRMSERVER_H

@@ -106,19 +106,148 @@ void frmServer::setWorkstationParams(QString wsname)
         if(list_ci.at(i).s_hostName == wsname)
         {
             //темп лекции
-            ui->sldTemp->setValue(list_ci.at(i).s_lessonTemp.toInt());
+            int temp = list_ci.at(i).s_lessonTemp.toInt();
+            ui->sldTemp->setValue(temp);
+            setWsTempPictures(temp);
 
             //усвоение материала
-            ui->sldUnderstand->setValue(list_ci.at(i).s_understanding.toInt());
-
+            int und = list_ci.at(i).s_understanding.toInt();
+            ui->sldUnderstand->setValue(und);
+            setWsUnderstandPictures(und);
 
             //громкость
-            ui->sldVolume->setValue(list_ci.at(i).s_volume.toInt());
+            int volume = list_ci.at(i).s_volume.toInt();
+            ui->sldVolume->setValue(volume);
+            setWsVolumePictures(volume);
 
         }
     }
 }
 
+//установка картинок для главной формы на темп
+void frmServer::setMainTempPictures(int value)
+{
+    if(value ==0)
+    {
+        ui->mimgTempDown->setEnabled(true);
+        ui->mimgTempNormal->setEnabled(false);
+        ui->mimgTempDown->setEnabled(false);
+    }
+    else if(value == 1)
+    {
+        ui->mimgTempDown->setEnabled(false);
+        ui->mimgTempNormal->setEnabled(true);
+        ui->mimgTempDown->setEnabled(false);
+    }
+    else if(value == 2)
+    {
+        ui->mimgTempDown->setEnabled(false);
+        ui->mimgTempNormal->setEnabled(false);
+        ui->mimgTempDown->setEnabled(true);
+    }
+}
+
+//установка картинок для главной формы на понимание
+void frmServer::setMainUnderstandPictures(int value)
+{
+    if(value ==0)
+    {
+        ui->mimgIsUnd->setEnabled(false);
+        ui->mimgIsNotUnd->setEnabled(true);
+    }
+    else if(value == 1)
+    {
+        ui->mimgIsUnd->setEnabled(true);
+        ui->mimgIsNotUnd->setEnabled(false);
+    }
+}
+
+//установка картинок для главной формы на звук
+void frmServer::setMainVolumePictures(int value)
+{
+    if(value ==0)
+    {
+        ui->mimgVolumeDown->setEnabled(true);
+        ui->mimgVolumeNormal->setEnabled(false);
+        ui->mimgVolumeUp->setEnabled(false);
+    }
+    else if(value == 1)
+    {
+        ui->mimgVolumeDown->setEnabled(false);
+        ui->mimgVolumeNormal->setEnabled(true);
+        ui->mimgVolumeUp->setEnabled(false);
+    }
+    else if(value == 2)
+    {
+        ui->mimgVolumeDown->setEnabled(false);
+        ui->mimgVolumeNormal->setEnabled(false);
+        ui->mimgVolumeUp->setEnabled(true);
+    }
+}
+
+//установка картинок для детальной формы на темп
+void frmServer::setWsTempPictures(int value)
+{
+    if(value ==0)
+    {
+        ui->dimgTempDown->setEnabled(true);
+        ui->dimgTempNormal->setEnabled(false);
+        ui->dimgTempUp->setEnabled(false);
+    }
+    else if(value == 1)
+    {
+        ui->dimgTempDown->setEnabled(false);
+        ui->dimgTempNormal->setEnabled(true);
+        ui->dimgTempUp->setEnabled(false);
+    }
+    else if(value == 2)
+    {
+        ui->dimgTempDown->setEnabled(false);
+        ui->dimgTempNormal->setEnabled(false);
+        ui->dimgTempUp->setEnabled(true);
+    }
+}
+
+//установка картинок для детальной формы на понимание
+void frmServer::setWsUnderstandPictures(int value)
+{
+    if(value ==0)
+    {
+        ui->dimgIsUnd->setEnabled(false);
+        ui->dimgIsNotUnd->setEnabled(true);
+    }
+    else if(value == 1)
+    {
+        ui->dimgIsUnd->setEnabled(true);
+        ui->dimgIsNotUnd->setEnabled(false);
+    }
+}
+
+//установка картинок для детальной формы на звук
+void frmServer::setWsVolumePictures(int value)
+{
+    if(value ==0)
+    {
+        ui->dimgVolumeDown->setEnabled(true);
+        ui->dimgVolumeNormal->setEnabled(false);
+        ui->dimgVolumeUp->setEnabled(false);
+    }
+    else if(value == 1)
+    {
+        ui->dimgVolumeDown->setEnabled(false);
+        ui->dimgVolumeNormal->setEnabled(true);
+        ui->dimgVolumeUp->setEnabled(false);
+    }
+    else if(value == 2)
+    {
+        ui->dimgVolumeDown->setEnabled(false);
+        ui->dimgVolumeNormal->setEnabled(false);
+        ui->dimgVolumeUp->setEnabled(true);
+    }
+}
+
+
+//установка параметров для главной формы
 void frmServer::setMainParams()
 {
     //средний темп лекции
@@ -141,19 +270,25 @@ void frmServer::setMainParams()
 
     QString str_temp;
     str_temp.setNum(m_temp,'g',0);
-    ui->slmTemp->setValue(str_temp.toInt());
+    int temp = str_temp.toInt();
+    ui->slmTemp->setValue(temp);
+    setMainTempPictures(temp);
 
     m_volume = m_volume/list_cnt;
 
     QString str_volume;
     str_volume.setNum(m_volume,'g',0);
-    ui->slmVolume->setValue(str_volume.toInt());
+    int volume = str_volume.toInt();
+    ui->slmVolume->setValue(volume);
+    setMainVolumePictures(volume);
 
     m_understand = m_understand/list_cnt;
 
     QString str_understand;
     str_understand.setNum(m_understand,'g',0);
-    ui->slmVolume->setValue(str_understand.toInt());
+    int und = str_understand.toInt();
+    ui->slmVolume->setValue(und);
+    setMainUnderstandPictures(und);
 
 
     //уровень понимания группы
@@ -196,6 +331,8 @@ void frmServer::on_btnCall_clicked()
 
     list_ci.replace(ui->listWorkstations->currentRow(),ci_row);
 
+    ui->listWorkstations->currentItem()->setIcon(QIcon(":/icons/itemico/bell.png"));
+
     QString _hostadress = ci_row.s_ipadress;
     sendMessage("true",_hostadress);
 }
@@ -212,6 +349,8 @@ void frmServer::on_btnCallCancel_clicked()
     ci_row.s_volume = list_ci.at(ui->listWorkstations->currentRow()).s_volume;
 
     list_ci.replace(ui->listWorkstations->currentRow(),ci_row);
+
+    ui->listWorkstations->currentItem()->setIcon(QIcon(":/icons/itemico/K001.ico"));
 
     QString _hostadress = ci_row.s_ipadress;
     sendMessage("false",_hostadress);
@@ -303,142 +442,5 @@ void frmServer::on_listWorkstations_currentRowChanged(int currentRow)
         setMainParams();
         QString ws_name = ui->listWorkstations->item(currentRow)->text();
         setWorkstationParams(ws_name);
-    }
-}
-
-
-
-
-void frmServer::on_slmTemp_valueChanged(int value)
-{
-    if(ui->listWorkstations->count()>0)
-    {
-        if(value ==0)
-        {
-            ui->mimgTempDown->setEnabled(true);
-            ui->mimgTempNormal->setEnabled(false);
-            ui->mimgTempDown->setEnabled(false);
-        }
-        else if(value == 1)
-        {
-            ui->mimgTempDown->setEnabled(false);
-            ui->mimgTempNormal->setEnabled(true);
-            ui->mimgTempDown->setEnabled(false);
-        }
-        else if(value == 2)
-        {
-            ui->mimgTempDown->setEnabled(false);
-            ui->mimgTempNormal->setEnabled(false);
-            ui->mimgTempDown->setEnabled(true);
-        }
-    }
-}
-
-void frmServer::on_slmVolume_valueChanged(int value)
-{
-    if(ui->listWorkstations->count()>0)
-    {
-        if(value ==0)
-        {
-            ui->mimgVolumeDown->setEnabled(true);
-            ui->mimgVolumeNormal->setEnabled(false);
-            ui->mimgVolumeUp->setEnabled(false);
-        }
-        else if(value == 1)
-        {
-            ui->mimgVolumeDown->setEnabled(false);
-            ui->mimgVolumeNormal->setEnabled(true);
-            ui->mimgVolumeUp->setEnabled(false);
-        }
-        else if(value == 2)
-        {
-            ui->mimgVolumeDown->setEnabled(false);
-            ui->mimgVolumeNormal->setEnabled(false);
-            ui->mimgVolumeUp->setEnabled(true);
-        }
-    }
-}
-
-void frmServer::on_slmUnderstand_valueChanged(int value)
-{
-    if(ui->listWorkstations->count()>0)
-    {
-        if(value ==0)
-        {
-            ui->mimgIsUnd->setEnabled(false);
-            ui->mimgIsNotUnd->setEnabled(true);
-        }
-        else if(value == 1)
-        {
-            ui->mimgIsUnd->setEnabled(true);
-            ui->mimgIsNotUnd->setEnabled(false);
-        }
-    }
-}
-
-void frmServer::on_sldTemp_valueChanged(int value)
-{
-    if(ui->listWorkstations->count()>0)
-    {
-        if(value ==0)
-        {
-            ui->dimgTempDown->setEnabled(true);
-            ui->dimgTempNormal->setEnabled(false);
-            ui->dimgTempDown->setEnabled(false);
-        }
-        else if(value == 1)
-        {
-            ui->dimgTempDown->setEnabled(false);
-            ui->dimgTempNormal->setEnabled(true);
-            ui->dimgTempDown->setEnabled(false);
-        }
-        else if(value == 2)
-        {
-            ui->dimgTempDown->setEnabled(false);
-            ui->dimgTempNormal->setEnabled(false);
-            ui->dimgTempDown->setEnabled(true);
-        }
-    }
-}
-
-void frmServer::on_sldVolume_valueChanged(int value)
-{
-    if(ui->listWorkstations->count()>0)
-    {
-        if(value ==0)
-        {
-            ui->dimgVolumeDown->setEnabled(true);
-            ui->dimgVolumeNormal->setEnabled(false);
-            ui->dimgVolumeUp->setEnabled(false);
-        }
-        else if(value == 1)
-        {
-            ui->dimgVolumeDown->setEnabled(false);
-            ui->dimgVolumeNormal->setEnabled(true);
-            ui->dimgVolumeUp->setEnabled(false);
-        }
-        else if(value == 2)
-        {
-            ui->dimgVolumeDown->setEnabled(false);
-            ui->dimgVolumeNormal->setEnabled(false);
-            ui->dimgVolumeUp->setEnabled(true);
-        }
-    }
-}
-
-void frmServer::on_sldUnderstand_valueChanged(int value)
-{
-    if(ui->listWorkstations->count()>0)
-    {
-        if(value ==0)
-        {
-            ui->dimgIsUnd->setEnabled(false);
-            ui->dimgIsNotUnd->setEnabled(true);
-        }
-        else if(value == 1)
-        {
-            ui->dimgIsUnd->setEnabled(true);
-            ui->dimgIsNotUnd->setEnabled(false);
-        }
     }
 }
