@@ -107,10 +107,14 @@ void frmServer::setWorkstationParams(QString wsname)
         {
             //темп лекции
             ui->sldTemp->setValue(list_ci.at(i).s_lessonTemp.toInt());
+
             //усвоение материала
             ui->sldUnderstand->setValue(list_ci.at(i).s_understanding.toInt());
+
+
             //громкость
             ui->sldVolume->setValue(list_ci.at(i).s_volume.toInt());
+
         }
     }
 }
@@ -150,6 +154,7 @@ void frmServer::setMainParams()
     QString str_understand;
     str_understand.setNum(m_understand,'g',0);
     ui->slmVolume->setValue(str_understand.toInt());
+
 
     //уровень понимания группы
     if(m_understand<=0.5)
@@ -303,3 +308,137 @@ void frmServer::on_listWorkstations_currentRowChanged(int currentRow)
 
 
 
+
+void frmServer::on_slmTemp_valueChanged(int value)
+{
+    if(ui->listWorkstations->count()>0)
+    {
+        if(value ==0)
+        {
+            ui->mimgTempDown->setEnabled(true);
+            ui->mimgTempNormal->setEnabled(false);
+            ui->mimgTempDown->setEnabled(false);
+        }
+        else if(value == 1)
+        {
+            ui->mimgTempDown->setEnabled(false);
+            ui->mimgTempNormal->setEnabled(true);
+            ui->mimgTempDown->setEnabled(false);
+        }
+        else if(value == 2)
+        {
+            ui->mimgTempDown->setEnabled(false);
+            ui->mimgTempNormal->setEnabled(false);
+            ui->mimgTempDown->setEnabled(true);
+        }
+    }
+}
+
+void frmServer::on_slmVolume_valueChanged(int value)
+{
+    if(ui->listWorkstations->count()>0)
+    {
+        if(value ==0)
+        {
+            ui->mimgVolumeDown->setEnabled(true);
+            ui->mimgVolumeNormal->setEnabled(false);
+            ui->mimgVolumeUp->setEnabled(false);
+        }
+        else if(value == 1)
+        {
+            ui->mimgVolumeDown->setEnabled(false);
+            ui->mimgVolumeNormal->setEnabled(true);
+            ui->mimgVolumeUp->setEnabled(false);
+        }
+        else if(value == 2)
+        {
+            ui->mimgVolumeDown->setEnabled(false);
+            ui->mimgVolumeNormal->setEnabled(false);
+            ui->mimgVolumeUp->setEnabled(true);
+        }
+    }
+}
+
+void frmServer::on_slmUnderstand_valueChanged(int value)
+{
+    if(ui->listWorkstations->count()>0)
+    {
+        if(value ==0)
+        {
+            ui->mimgIsUnd->setEnabled(false);
+            ui->mimgIsNotUnd->setEnabled(true);
+        }
+        else if(value == 1)
+        {
+            ui->mimgIsUnd->setEnabled(true);
+            ui->mimgIsNotUnd->setEnabled(false);
+        }
+    }
+}
+
+void frmServer::on_sldTemp_valueChanged(int value)
+{
+    if(ui->listWorkstations->count()>0)
+    {
+        if(value ==0)
+        {
+            ui->dimgTempDown->setEnabled(true);
+            ui->dimgTempNormal->setEnabled(false);
+            ui->dimgTempDown->setEnabled(false);
+        }
+        else if(value == 1)
+        {
+            ui->dimgTempDown->setEnabled(false);
+            ui->dimgTempNormal->setEnabled(true);
+            ui->dimgTempDown->setEnabled(false);
+        }
+        else if(value == 2)
+        {
+            ui->dimgTempDown->setEnabled(false);
+            ui->dimgTempNormal->setEnabled(false);
+            ui->dimgTempDown->setEnabled(true);
+        }
+    }
+}
+
+void frmServer::on_sldVolume_valueChanged(int value)
+{
+    if(ui->listWorkstations->count()>0)
+    {
+        if(value ==0)
+        {
+            ui->dimgVolumeDown->setEnabled(true);
+            ui->dimgVolumeNormal->setEnabled(false);
+            ui->dimgVolumeUp->setEnabled(false);
+        }
+        else if(value == 1)
+        {
+            ui->dimgVolumeDown->setEnabled(false);
+            ui->dimgVolumeNormal->setEnabled(true);
+            ui->dimgVolumeUp->setEnabled(false);
+        }
+        else if(value == 2)
+        {
+            ui->dimgVolumeDown->setEnabled(false);
+            ui->dimgVolumeNormal->setEnabled(false);
+            ui->dimgVolumeUp->setEnabled(true);
+        }
+    }
+}
+
+void frmServer::on_sldUnderstand_valueChanged(int value)
+{
+    if(ui->listWorkstations->count()>0)
+    {
+        if(value ==0)
+        {
+            ui->dimgIsUnd->setEnabled(false);
+            ui->dimgIsNotUnd->setEnabled(true);
+        }
+        else if(value == 1)
+        {
+            ui->dimgIsUnd->setEnabled(true);
+            ui->dimgIsNotUnd->setEnabled(false);
+        }
+    }
+}

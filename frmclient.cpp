@@ -85,11 +85,11 @@ void frmClient::parseMessage(QString message)
 {
     if(message == "true")
     {
-        ui->indicator->setStyleSheet("QLineEdit {background-color: red}");
+        ui->indicator->setEnabled(true);
     }
     else if (message == "false")
     {
-        ui->indicator->setStyleSheet("QLineEdit {background-color: green}");
+        ui->indicator->setEnabled(false);
     }
 }
 

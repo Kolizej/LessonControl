@@ -36,24 +36,7 @@
       <string/>
      </property>
      <layout class="QGridLayout" name="gridLayout">
-      <property name="sizeConstraint">
-       <enum>QLayout::SetDefaultConstraint</enum>
-      </property>
-      <item row="1" column="1">
-       <widget class="QLabel" name="lblWorkstation">
-        <property name="font">
-         <font>
-          <pointsize>10</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Komp1</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
+      <item row="0" column="0">
        <widget class="QLabel" name="label_2">
         <property name="minimumSize">
          <size>
@@ -78,7 +61,21 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="2">
+      <item row="0" column="1">
+       <widget class="QLabel" name="lblWorkstation">
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Komp1</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
        <spacer name="horizontalSpacer">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -91,26 +88,35 @@
         </property>
        </spacer>
       </item>
-      <item row="1" column="3">
-       <widget class="QLineEdit" name="indicator">
+      <item row="0" column="3">
+       <widget class="QLabel" name="indicator">
         <property name="enabled">
          <bool>false</bool>
         </property>
         <property name="minimumSize">
          <size>
-          <width>20</width>
-          <height>20</height>
+          <width>32</width>
+          <height>32</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>20</width>
-          <height>20</height>
+          <width>32</width>
+          <height>32</height>
          </size>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="images.qrc">:/icons/itemico/bell.png</pixmap>
+        </property>
+        <property name="scaledContents">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
-      <item row="1" column="4">
+      <item row="0" column="4">
        <widget class="QLabel" name="label_3">
         <property name="font">
          <font>
@@ -123,7 +129,7 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="5">
+      <item row="0" column="5">
        <spacer name="horizontalSpacer_2">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>

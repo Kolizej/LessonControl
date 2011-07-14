@@ -50,6 +50,12 @@ private slots:
     //void on_listWorkstations_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous);
     void on_btnCall_clicked();
     void on_btnCallCancel_clicked();
+    void on_slmTemp_valueChanged(int value);
+    void on_slmVolume_valueChanged(int value);
+    void on_slmUnderstand_valueChanged(int value);
+    void on_sldTemp_valueChanged(int value);
+    void on_sldVolume_valueChanged(int value);
+    void on_sldUnderstand_valueChanged(int value);
 };
 
 #endif // FRMSERVER_H
