@@ -13,5 +13,7 @@
         <file>volumeNormal.ico</file>
         <file>button_cancel.png</file>
         <file>bell.png</file>
+        <file>server_delete.png</file>
+        <file>server.png</file>
     </qresource>
 </RCC>
