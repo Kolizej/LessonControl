@@ -124,7 +124,15 @@ QString frmClient::makeMessageString()
 {    
     QString res;
     cInfo.s_hostName = QHostInfo::localHostName();
-    res+=cInfo.s_hostName+"|"+cInfo.s_ipadress+"|"+cInfo.s_lessonTemp+"|"+cInfo.s_understanding+"|"+cInfo.s_volume+"|"+cInfo.s_status;
+    if(ui->indicator->isEnabled())
+    {
+        cInfo.s_isCalled = "true";
+    }
+    else
+    {
+        cInfo.s_isCalled = "false";
+    }
+    res+=cInfo.s_hostName+"|"+cInfo.s_ipadress+"|"+cInfo.s_lessonTemp+"|"+cInfo.s_understanding+"|"+cInfo.s_volume+"|"+cInfo.s_status+"|"+cInfo.s_isCalled;
     return res;
 }
 

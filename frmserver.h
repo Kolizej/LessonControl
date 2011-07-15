@@ -56,6 +56,7 @@ private slots:
     void setWsVolumePictures(int value);
     void setWsUnderstandPictures(int value);
 
+    void on_tabAll_currentChanged(int index);
 };
 
 #endif // FRMSERVER_H

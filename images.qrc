@@ -15,5 +15,7 @@
         <file>bell.png</file>
         <file>server_delete.png</file>
         <file>server.png</file>
+        <file>ws.PNG</file>
+        <file>workstation.png</file>
     </qresource>
 </RCC>

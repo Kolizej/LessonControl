@@ -66,6 +66,7 @@ void frmServer::parseMessage(QString message)
     ci.s_understanding = struct_list.value(3);
     ci.s_volume = struct_list.value(4);
     ci.s_status = struct_list.value(5);
+    ci.s_isCalled = struct_list.value(6);
 
     if(ci.s_status == "online")
     {
@@ -350,7 +351,7 @@ void frmServer::on_btnCallCancel_clicked()
 
     list_ci.replace(ui->listWorkstations->currentRow(),ci_row);
 
-    ui->listWorkstations->currentItem()->setIcon(QIcon(":/icons/itemico/K001.ico"));
+    ui->listWorkstations->currentItem()->setIcon(QIcon(":/icons/itemico/workstation.png"));
 
     QString _hostadress = ci_row.s_ipadress;
     sendMessage("false",_hostadress);
@@ -385,7 +386,7 @@ void frmServer::setParams()
                 if(cip.s_isCalled == "true")
                     litem->setIcon(QIcon(":/icons/itemico/bell.png"));
                 else
-                    litem->setIcon(QIcon(":/icons/itemico/K001.ico"));
+                    litem->setIcon(QIcon(":/icons/itemico/workstation.png"));
 
                 litem->setText(cip.s_hostName);
                 ui->listWorkstations->addItem(litem);
@@ -442,5 +443,81 @@ void frmServer::on_listWorkstations_currentRowChanged(int currentRow)
         setMainParams();
         QString ws_name = ui->listWorkstations->item(currentRow)->text();
         setWorkstationParams(ws_name);
+    }
+}
+
+void frmServer::on_tabAll_currentChanged(int index)
+{
+    int temp_up = 0;
+    int temp_norm = 0;
+    int temp_down = 0;
+    int volume_up = 0;
+    int volume_norm = 0;
+    int volume_down = 0;
+    int und = 0;
+    int notUnd = 0;
+
+    if(index == 2)
+    {
+        for(int i = 0;i<list_ci.count();i++)
+        {
+            //темп
+            if(list_ci.at(i).s_lessonTemp.toInt() == 0)
+            {
+                temp_down++;
+            }
+            if(list_ci.at(i).s_lessonTemp.toInt() == 1)
+            {
+                temp_norm++;
+            }
+            if(list_ci.at(i).s_lessonTemp.toInt() == 2)
+            {
+                temp_up++;
+            }
+
+            //громкость
+            if(list_ci.at(i).s_volume.toInt() == 0)
+            {
+                volume_down++;
+            }
+            if(list_ci.at(i).s_volume.toInt() == 1)
+            {
+                volume_norm++;
+            }
+            if(list_ci.at(i).s_volume.toInt() == 2)
+            {
+                volume_up++;
+            }
+
+            //понимание
+            if(list_ci.at(i).s_understanding.toInt() == 0)
+            {
+                notUnd++;
+            }
+            if(list_ci.at(i).s_understanding.toInt() == 1)
+            {
+                und++;
+            }
+        }
+
+        QString txt;
+        txt = tr("Швидко: ")+QString::number(temp_up)+tr(" робочих станцiй");
+        ui->lblTempUp->setText(txt);
+        txt = tr("Норма: ")+QString::number(temp_norm)+tr(" робочих станцiй");
+        ui->lblTempNormal->setText(txt);
+        txt = tr("Повiльно ")+QString::number(temp_down)+tr(" робочих станцiй");
+        ui->lblTempDown->setText(txt);
+
+        txt = tr("Голосно: ")+QString::number(volume_up)+tr(" робочих станцiй");
+        ui->lblVolumeUp->setText(txt);
+        txt = tr("Норма: ")+QString::number(volume_norm)+tr(" робочих станцiй");
+        ui->lblVolumeNormal->setText(txt);
+        txt = tr("Тихо: ")+QString::number(volume_down)+tr(" робочих станцiй");
+        ui->lblVolumeDown->setText(txt);
+
+        txt = tr("Зрозумiло: ")+QString::number(und)+tr(" робочих станцiй");
+        ui->LblUnd->setText(txt);
+        txt = tr("Не зрозумiло: ")+QString::number(notUnd)+tr(" робочих станцiй");
+        ui->lblDontUnd->setText(txt);
     }
 }
