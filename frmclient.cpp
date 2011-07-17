@@ -18,9 +18,10 @@ frmClient::frmClient(QWidget *parent) :
     moveWindowToCenter();
 
     //слушающий сервер (для метода вызова)
-    connect(&serverOnClient,SIGNAL(newConnection()),this,SLOT(acceptServerConnections()));
-    QHostAddress ha(p_server);
-    serverOnClient.listen(ha,p_port.toUInt()+1);
+    connect(&server_add,SIGNAL(newConnection()),this,SLOT(acceptConnection()));
+    QHostAddress ha(p_server);    
+    uint prt = p_port.toUInt()+1;
+    server_add.listen(QHostAddress::Any,prt);
 
     //начальные параметры для структуры сообщения
     cInfo.s_ipadress = getLocalIP();
@@ -68,16 +69,16 @@ void frmClient::moveWindowToCenter()
 void frmClient::startRead()
 {
     char buffer[1024] = {0};
-    clientForCall->read(buffer,clientForCall->bytesAvailable());
+    client_add->read(buffer,client_add->bytesAvailable());
     parseMessage((QString)buffer);
-    clientForCall->close();
+    client_add->close();
 }
 
 //слот обрабатывает входящие подключения
-void frmClient::acceptServerConnections()
+void frmClient::acceptConnection()
 {
-    clientForCall = serverOnClient.nextPendingConnection();
-    connect(clientForCall,SIGNAL(readyRead()),this,SLOT(startRead()));
+    client_add = server_add.nextPendingConnection();
+    connect(client_add,SIGNAL(readyRead()),this,SLOT(startRead()));
 }
 
 //слот разбирает тип входящего сообщения и устанавливает реакцию на него

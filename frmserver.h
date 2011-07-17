@@ -23,30 +23,46 @@ public:
 
 private:
     Ui::frmServer *ui;
+    //исходные -------------------
     QTcpServer server;
     QTcpSocket *client;
+    //----------------------------
+
+    //дополнительные -------------
+    QTcpSocket client_add; //пишущий сокет для посылки вызова
+    //----------------------------
+
+
     ClientInfo ci;
     QList<ClientInfo> list_ci;
     QMessageBox msg;
     char* str_message;
-    QTcpSocket client_server;
+
 
 protected:
     void closeEvent(QCloseEvent *ce);
 
 private slots:
-    void moveWindowToCenter();
+
+    //исходные -------------------
     void acceptConnection();
     void startRead();
     void parseMessage(QString message);
+    //----------------------------
+
+    //дополнительные -------------
+    void sendMessage(QString message_, QString host);
+    void connectToServer(QString server_adress, quint16 server_port);
+    //----------------------------
+
+
+    void moveWindowToCenter();
     void setParams();
     bool isClientInfoExists(ClientInfo clInf);
     void setMainParams();
     void setDefaultParams();
     void setWorkstationParams(QString wsname);
     void on_listWorkstations_currentRowChanged(int currentRow);
-    void sendMessage(QString message_, QString host);
-    void connectToServer(QString server_adress, quint16 server_port);
     void on_btnCall_clicked();
     void on_btnCallCancel_clicked();
     void setMainTempPictures(int value);
@@ -55,7 +71,6 @@ private slots:
     void setWsTempPictures(int value);
     void setWsVolumePictures(int value);
     void setWsUnderstandPictures(int value);
-
     void on_tabAll_currentChanged(int index);
 };
 

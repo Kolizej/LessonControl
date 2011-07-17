@@ -306,17 +306,18 @@ void frmServer::setMainParams()
 
 void frmServer::sendMessage(QString message_, QString host)
 {
-    connectToServer(host,p_port.toUInt()+1);
+    uint prt = p_port.toUInt()+1;
+    connectToServer(host,prt);
     QByteArray array = message_.toAscii();
     str_message = array.data();
 
-    client_server.write(str_message,100);
+    client_add.write(str_message,100);
 }
 
 void frmServer::connectToServer(QString server_adress, quint16 server_port)
 {
     QHostAddress ha(server_adress);
-    client_server.connectToHost(ha,server_port);
+    client_add.connectToHost(ha,server_port);
 }
 
 void frmServer::on_btnCall_clicked()

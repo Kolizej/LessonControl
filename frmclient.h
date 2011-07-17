@@ -22,9 +22,16 @@ public:
 
 private:
     Ui::frmClient *ui;
+
+    //исходный ---------------------
     QTcpSocket client;
-    QTcpServer serverOnClient;
-    QTcpSocket *clientForCall;
+    //------------------------------
+
+    //дополнительный ---------------
+    QTcpServer server_add;
+    QTcpSocket *client_add;
+    //------------------------------
+
     char* str_message;
     ClientInfo cInfo;
     QMessageBox msg;
@@ -33,10 +40,19 @@ protected:
     void closeEvent(QCloseEvent *ce);
 
 private slots:
-    void moveWindowToCenter();
+    //исходный ---------------------
     void sendMessage(QString status);
-    void connectToServer(QString server_adress, quint16 server_port);
     void sendCloseMessage();
+    void connectToServer(QString server_adress, quint16 server_port);
+    //------------------------------
+
+    //дополнительный ---------------
+    void acceptConnection();
+    void startRead();
+    void parseMessage(QString message);
+    //------------------------------
+
+    void moveWindowToCenter();
     QString makeMessageString();    
     void on_btnUnderstand_toggled(bool checked);
     void on_btnNotUnderstand_toggled(bool checked);
@@ -46,9 +62,6 @@ private slots:
     void on_btnVolumeHigh_toggled(bool checked);
     void on_btnVolumeNormal_toggled(bool checked);
     void on_btnVolumeLow_toggled(bool checked);
-    void acceptServerConnections();
-    void startRead();
-    void parseMessage(QString message);
     QString getLocalIP();
 };
 
