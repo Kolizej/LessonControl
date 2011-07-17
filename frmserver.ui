@@ -102,7 +102,7 @@
      <widget class="QWidget" name="tabMain">
       <attribute name="icon">
        <iconset resource="images.qrc">
-        <normaloff>:/icons/itemico/K018.ico</normaloff>:/icons/itemico/K018.ico</iconset>
+        <normaloff>:/icons/itemico/K018.png</normaloff>:/icons/itemico/K018.png</iconset>
       </attribute>
       <attribute name="title">
        <string>Загальна інформація</string>
@@ -691,7 +691,7 @@
      <widget class="QWidget" name="tabDetail">
       <attribute name="icon">
        <iconset resource="images.qrc">
-        <normaloff>:/icons/itemico/AllDay24.ico</normaloff>:/icons/itemico/AllDay24.ico</iconset>
+        <normaloff>:/icons/itemico/AllDay24.png</normaloff>:/icons/itemico/AllDay24.png</iconset>
       </attribute>
       <attribute name="title">
        <string>Детальна інформація</string>
@@ -1207,6 +1207,10 @@
       </layout>
      </widget>
      <widget class="QWidget" name="tab">
+      <attribute name="icon">
+       <iconset resource="images.qrc">
+        <normaloff>:/icons/itemico/history.png</normaloff>:/icons/itemico/history.png</iconset>
+      </attribute>
       <attribute name="title">
        <string>Статистика</string>
       </attribute>
@@ -1218,6 +1222,34 @@
          </property>
          <layout class="QGridLayout" name="gridLayout_13">
           <item row="0" column="0">
+           <widget class="QLabel" name="dimgTempUp_2">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="images.qrc">:/icons/itemico/agt_update_misc_up.png</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
            <widget class="QLabel" name="lblTempUp">
             <property name="font">
              <font>
@@ -1234,6 +1266,34 @@
            </widget>
           </item>
           <item row="1" column="0">
+           <widget class="QLabel" name="dimgTempNormal_2">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="images.qrc">:/icons/itemico/agt_action_success.png</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
            <widget class="QLabel" name="lblTempNormal">
             <property name="font">
              <font>
@@ -1247,6 +1307,34 @@
            </widget>
           </item>
           <item row="2" column="0">
+           <widget class="QLabel" name="dimgTempDown_2">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="images.qrc">:/icons/itemico/agt_update_misc_down.PNG</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
            <widget class="QLabel" name="lblTempDown">
             <property name="font">
              <font>
@@ -1272,6 +1360,34 @@
          </property>
          <layout class="QGridLayout" name="gridLayout_12">
           <item row="0" column="0">
+           <widget class="QLabel" name="dimgTempUp_3">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="images.qrc">:/icons/itemico/agt_update_misc_up.png</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
            <widget class="QLabel" name="lblVolumeUp">
             <property name="font">
              <font>
@@ -1288,6 +1404,34 @@
            </widget>
           </item>
           <item row="1" column="0">
+           <widget class="QLabel" name="dimgTempNormal_3">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="images.qrc">:/icons/itemico/agt_action_success.png</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
            <widget class="QLabel" name="lblVolumeNormal">
             <property name="font">
              <font>
@@ -1301,6 +1445,34 @@
            </widget>
           </item>
           <item row="2" column="0">
+           <widget class="QLabel" name="dimgTempDown_3">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="images.qrc">:/icons/itemico/agt_update_misc_down.PNG</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
            <widget class="QLabel" name="lblVolumeDown">
             <property name="font">
              <font>
@@ -1326,6 +1498,34 @@
          </property>
          <layout class="QGridLayout" name="gridLayout_11">
           <item row="0" column="0">
+           <widget class="QLabel" name="dimgIsUnd_2">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="images.qrc">:/icons/itemico/agt_action_success.png</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
            <widget class="QLabel" name="LblUnd">
             <property name="font">
              <font>
@@ -1342,6 +1542,34 @@
            </widget>
           </item>
           <item row="1" column="0">
+           <widget class="QLabel" name="dimgIsNotUnd_2">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="images.qrc">:/icons/itemico/button_cancel.png</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
            <widget class="QLabel" name="lblDontUnd">
             <property name="font">
              <font>

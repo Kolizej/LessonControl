@@ -17,5 +17,8 @@
         <file>server.png</file>
         <file>ws.PNG</file>
         <file>workstation.png</file>
+        <file>AllDay24.png</file>
+        <file>K018.png</file>
+        <file>history.png</file>
     </qresource>
 </RCC>

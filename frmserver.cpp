@@ -322,40 +322,46 @@ void frmServer::connectToServer(QString server_adress, quint16 server_port)
 
 void frmServer::on_btnCall_clicked()
 {
-    ClientInfo ci_row;
-    ci_row.s_hostName = list_ci.at(ui->listWorkstations->currentRow()).s_hostName;
-    ci_row.s_ipadress = list_ci.at(ui->listWorkstations->currentRow()).s_ipadress;
-    ci_row.s_isCalled = "true";
-    ci_row.s_lessonTemp = list_ci.at(ui->listWorkstations->currentRow()).s_lessonTemp;
-    ci_row.s_status = list_ci.at(ui->listWorkstations->currentRow()).s_status;
-    ci_row.s_understanding = list_ci.at(ui->listWorkstations->currentRow()).s_understanding;
-    ci_row.s_volume = list_ci.at(ui->listWorkstations->currentRow()).s_volume;
+    if(ui->listWorkstations->selectedItems().count()>0)
+    {
+        ClientInfo ci_row;
+        ci_row.s_hostName = list_ci.at(ui->listWorkstations->currentRow()).s_hostName;
+        ci_row.s_ipadress = list_ci.at(ui->listWorkstations->currentRow()).s_ipadress;
+        ci_row.s_isCalled = "true";
+        ci_row.s_lessonTemp = list_ci.at(ui->listWorkstations->currentRow()).s_lessonTemp;
+        ci_row.s_status = list_ci.at(ui->listWorkstations->currentRow()).s_status;
+        ci_row.s_understanding = list_ci.at(ui->listWorkstations->currentRow()).s_understanding;
+        ci_row.s_volume = list_ci.at(ui->listWorkstations->currentRow()).s_volume;
 
-    list_ci.replace(ui->listWorkstations->currentRow(),ci_row);
+        list_ci.replace(ui->listWorkstations->currentRow(),ci_row);
 
-    ui->listWorkstations->currentItem()->setIcon(QIcon(":/icons/itemico/bell.png"));
+        ui->listWorkstations->currentItem()->setIcon(QIcon(":/icons/itemico/bell.png"));
 
-    QString _hostadress = ci_row.s_ipadress;
-    sendMessage("true",_hostadress);
+        QString _hostadress = ci_row.s_ipadress;
+        sendMessage("true",_hostadress);
+    }
 }
 
 void frmServer::on_btnCallCancel_clicked()
 {
-    ClientInfo ci_row;
-    ci_row.s_hostName = list_ci.at(ui->listWorkstations->currentRow()).s_hostName;
-    ci_row.s_ipadress = list_ci.at(ui->listWorkstations->currentRow()).s_ipadress;
-    ci_row.s_isCalled = "false";
-    ci_row.s_lessonTemp = list_ci.at(ui->listWorkstations->currentRow()).s_lessonTemp;
-    ci_row.s_status = list_ci.at(ui->listWorkstations->currentRow()).s_status;
-    ci_row.s_understanding = list_ci.at(ui->listWorkstations->currentRow()).s_understanding;
-    ci_row.s_volume = list_ci.at(ui->listWorkstations->currentRow()).s_volume;
+    if(ui->listWorkstations->selectedItems().count()>0)
+    {
+        ClientInfo ci_row;
+        ci_row.s_hostName = list_ci.at(ui->listWorkstations->currentRow()).s_hostName;
+        ci_row.s_ipadress = list_ci.at(ui->listWorkstations->currentRow()).s_ipadress;
+        ci_row.s_isCalled = "false";
+        ci_row.s_lessonTemp = list_ci.at(ui->listWorkstations->currentRow()).s_lessonTemp;
+        ci_row.s_status = list_ci.at(ui->listWorkstations->currentRow()).s_status;
+        ci_row.s_understanding = list_ci.at(ui->listWorkstations->currentRow()).s_understanding;
+        ci_row.s_volume = list_ci.at(ui->listWorkstations->currentRow()).s_volume;
 
-    list_ci.replace(ui->listWorkstations->currentRow(),ci_row);
+        list_ci.replace(ui->listWorkstations->currentRow(),ci_row);
 
-    ui->listWorkstations->currentItem()->setIcon(QIcon(":/icons/itemico/workstation.png"));
+        ui->listWorkstations->currentItem()->setIcon(QIcon(":/icons/itemico/workstation.png"));
 
-    QString _hostadress = ci_row.s_ipadress;
-    sendMessage("false",_hostadress);
+        QString _hostadress = ci_row.s_ipadress;
+        sendMessage("false",_hostadress);
+    }
 }
 
 void frmServer::setDefaultParams()
