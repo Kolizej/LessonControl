@@ -252,7 +252,7 @@
         </property>
         <property name="icon">
          <iconset resource="images.qrc">
-          <normaloff>:/icons/itemico/volumeUp.ico</normaloff>:/icons/itemico/volumeUp.ico</iconset>
+          <normaloff>:/icons/itemico/agt_update_misc_up.png</normaloff>:/icons/itemico/agt_update_misc_up.png</iconset>
         </property>
         <property name="checkable">
          <bool>true</bool>
@@ -266,7 +266,7 @@
         </property>
         <property name="icon">
          <iconset resource="images.qrc">
-          <normaloff>:/icons/itemico/volumeNormal.ico</normaloff>:/icons/itemico/volumeNormal.ico</iconset>
+          <normaloff>:/icons/itemico/agt_action_success.png</normaloff>:/icons/itemico/agt_action_success.png</iconset>
         </property>
         <property name="checkable">
          <bool>true</bool>
@@ -283,7 +283,7 @@
         </property>
         <property name="icon">
          <iconset resource="images.qrc">
-          <normaloff>:/icons/itemico/volumeDown.ico</normaloff>:/icons/itemico/volumeDown.ico</iconset>
+          <normaloff>:/icons/itemico/agt_update_misc_down.PNG</normaloff>:/icons/itemico/agt_update_misc_down.PNG</iconset>
         </property>
         <property name="checkable">
          <bool>true</bool>
